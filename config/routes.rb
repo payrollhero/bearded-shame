@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   resources :users do
     member do
       get 'trim'
-      get 'massage'
+      get 'massage_and_trim'
       get 'shave'
     end
   end
