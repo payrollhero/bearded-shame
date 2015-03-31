@@ -4,5 +4,17 @@ namespace 'users' do
     20.times do
       User.create type: %w(Employer Worker).sample,first_name: Random.firstname, last_name: Random.lastname, email: Random.email, password: 'password', password_confirmation: 'password'
     end
+
+    talents = %w(shaving massage haircut farming cutting fighting driving coding trimming typing)
+
+    talents.each do |talent|
+      Talent.create name: talent
+    end
+
+    Worker.all.each do |user|
+      user.talent_id = rand(1..talents.size)
+      user.save
+    end
+
   end
 end
