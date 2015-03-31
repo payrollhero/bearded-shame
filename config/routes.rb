@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   get 'workers/index'
 
   resources :employers, only: :index
-  resources :workers
+  resources :workers do
+    post :choose_talent, on: :member
+  end
 
   get 'site/index'
 
