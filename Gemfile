@@ -44,5 +44,29 @@ group :development, :test do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'haml'
+
+  # testing
+  gem 'rspec-rails', '~> 3.0'
+  gem 'rubocop', require: false
+  gem 'factory_girl_rails'
+  gem 'dotenv-rails'
+  gem 'pry-rails'
 end
 
+group :development do
+  gem 'guard-rspec', require: false
+  gem 'rb-fchange', require: false
+  gem 'rb-fsevent', require: false
+  gem 'rb-inotify', require: false
+  gem 'rb-readline', require: false
+  gem 'spring-commands-rspec'
+  gem 'pry-doc'
+  gem 'pry-byebug'
+  gem 'pry-stack_explorer'
+end
+
+group :test do
+  gem 'database_cleaner'
+  gem 'shoulda-matchers', require: false
+  gem 'terminal-notifier-guard'
+end
