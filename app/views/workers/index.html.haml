@@ -1,5 +1,5 @@
 -# %h1= "Current Talent - #{current_user.talent}"
-%h1 Choose a talent
+%h1= "Current talent - #{current_user.talent.name}"
 
 %table.table
   %tr
@@ -9,4 +9,4 @@
       %tr
         %td= talent.name
         %td
-          = link_to 'Choose', choose_talent_worker_path(current_user.id, talent_id: talent.id), class: 'btn btn-success', method: :post
+          = link_to 'Choose', choose_talent_worker_path(current_user.id, talent_id: talent.id), class: "btn btn-primary", method: :post
