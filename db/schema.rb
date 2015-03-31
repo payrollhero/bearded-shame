@@ -11,14 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150331054840) do
-
-  create_table "roles", force: :cascade do |t|
-    t.string   "name"
-    t.string   "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
+ActiveRecord::Schema.define(version: 20150331054452) do
 
   create_table "users", force: :cascade do |t|
     t.string   "first_name"
@@ -26,6 +19,9 @@ ActiveRecord::Schema.define(version: 20150331054840) do
     t.string   "email"
     t.string   "username"
     t.string   "password"
+    t.string   "type"
+    t.integer  "worker_id"
+    t.string   "status"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.string   "encrypted_password",     default: "", null: false

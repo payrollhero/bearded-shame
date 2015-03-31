@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'employer/index'
+
   get 'site/index'
 
   devise_for :users
