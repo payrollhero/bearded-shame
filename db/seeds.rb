@@ -6,6 +6,12 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-%w(shaving massage haircut farming cutting fighting driving coding trimming typing).each do |talent|
+talents = %w(shaving massage haircut farming cutting fighting driving coding trimming typing)
+
+talents.each do |talent|
   Talent.create name: talent
+end
+
+Worker.all.each do |user|
+  user.talent_id = rand(1..talents.size)
 end
