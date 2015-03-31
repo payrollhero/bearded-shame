@@ -9,7 +9,10 @@
     .collapse.navbar-collapse
       %ul.nav.navbar-nav
         %li
-          %a{:href => "#"} Dud
+          - if current_user.try(:type) == "Worker"
+            = link_to "Click Me", workers_path
+          - elsif current_user.try(:type) == 'Employer'
+            = link_to "Click Me", employers_path
       %ul.nav.navbar-nav.navbar-right
         %li.dropdown
           - if current_user
