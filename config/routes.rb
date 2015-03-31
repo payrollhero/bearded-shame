@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :employers
+  resources :employers, only: :index
   resources :workers
 
   get 'site/index'
