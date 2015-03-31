@@ -15,7 +15,14 @@
           - if current_user
             %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
               %span.glyphicon.glyphicon-user>
-              %strong Nombre
+              %strong= current_user.first_name
               %span.glyphicon.glyphicon-chevron-down
             %ul.dropdown-menu
-              %li= link_to "logout", '#'
+              %li= link_to "logout", destroy_user_session_path, method: :delete
+          - else
+            %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+              %span.glyphicon.glyphicon-user>
+              %strong Guest
+              %span.glyphicon.glyphicon-chevron-down
+            %ul.dropdown-menu
+              %li= link_to "Sign In", new_user_session_path
