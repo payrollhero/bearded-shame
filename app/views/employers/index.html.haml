@@ -11,4 +11,7 @@
           %td= worker.fullname
           %td= worker.talent.name
           %td
-            = link_to 'Hire', '#', class: 'btn btn-success'
+            - if worker.employer == current_user
+              = link_to 'Unhire', unhire_worker_employer_path(current_user.id, worker_id: worker.id), class: "btn btn-danger", method: :post
+            - else
+              = link_to 'Hire', hire_worker_employer_path(current_user.id, worker_id: worker.id), class: 'btn btn-success', method: :post
