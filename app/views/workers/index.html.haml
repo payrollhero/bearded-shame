@@ -1,2 +1,12 @@
-%h1 Workers#index
-%p Find me in app/views/workers/index.html.haml
+-# %h1= "Current Talent - #{current_user.talent}"
+%h1 Choose a talent
+
+%table.table
+  %tr
+    %th Name
+    %th Action
+    - @talents.each do |talent|
+      %tr
+        %td= talent.name
+        %td
+          = link_to 'Choose', '#', class: 'btn btn-success'
