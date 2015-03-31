@@ -4,8 +4,9 @@ class WorkersController < ApplicationController
   end
 
   def choose_talent
-    worker = Worker.find params[:id]
-    worker.update_attribute :talent_id, params[:talent_id]
+    current_user.choose_talent params[:talent_id]
+    # worker = Worker.find params[:id]
+    # worker.update_attribute :talent_id, params[:talent_id]
     redirect_to :back
   end
 end
