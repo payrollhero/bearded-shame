@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  get 'employer/index'
+  resources :employers
+  resources :workers
 
   get 'site/index'
 
