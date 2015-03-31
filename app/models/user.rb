@@ -18,8 +18,6 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_one :role
-
   def fullname
     "#{first_name} #{last_name}"
   end
