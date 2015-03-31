@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'workers/index'
+
   resources :employers, only: :index
   resources :workers
 

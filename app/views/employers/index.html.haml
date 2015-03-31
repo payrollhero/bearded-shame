@@ -1,5 +1,14 @@
 %h1 Hire a worker
 
 %table.table
-  %th Name
-  %th Talent
+  %tr
+    %th Name
+    %th Talent
+    %th Action
+    - if @workers
+      - @workers.each do |worker|
+        %tr
+          %td= worker.fullname
+          %td= worker.talent.name
+          %td
+            = link_to 'Hire', '#', class: 'btn btn-success'
