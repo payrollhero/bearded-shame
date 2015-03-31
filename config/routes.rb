@@ -18,11 +18,6 @@ Rails.application.routes.draw do
 
   root 'site#index'
   resources :users do
-    member do
-      get 'trim'
-      get 'massage_and_trim'
-      get 'shave'
-    end
   end
 
 end
