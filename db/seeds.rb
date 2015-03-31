@@ -14,4 +14,5 @@ end
 
 Worker.all.each do |user|
   user.talent_id = rand(1..talents.size)
+  user.save
 end
