@@ -5,3 +5,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+%w(shaving massage haircut farming cutting fighting driving coding trimming typing).each do |talent|
+  Talent.create name: talent
+end
