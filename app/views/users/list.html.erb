@@ -1,0 +1,20 @@
+<h1> Users </h1>
+
+<p><%= flash[:success] %></p>
+
+<table class="table-striped table-bordered">
+  <thead>
+    <th>Full Name</th>
+    <th>Actions</th>
+  </thead>
+
+  <tbody>
+    <% @users.each do | user | %>
+      <tr>
+        <td><%= user.fullname %></td>
+        <td><%= link_to("Trim", trim_user_path(user)) %> | <%= link_to("Shave", shave_user_path(user)) %> | <%= link_to("Massage and Trim", massage_and_trim_user_path(user)) %> | <%= link_to("Show Activities", user_activities_path(user)) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+

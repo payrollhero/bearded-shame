@@ -16,13 +16,19 @@ Rails.application.routes.draw do
   #
   #
   root 'users#list'
+
+
   resources :users do
     member do
       get 'trim'
       get 'massage_and_trim'
       get 'shave'
     end
+
+    resources :activities, :only => [:index]
   end
+
+  devise_for :users, :path => "auth"
 
   # Example resource route with options:
   #   resources :products do
