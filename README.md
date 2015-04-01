@@ -19,7 +19,7 @@ People have beards. Sometimes you need it trimed, other times you need it shaved
 
 And also sometimes people like massages too I hear. Maybe track those as well.
 
-Feel free to add a way to add new users. We've added a rake task that'll give you a preliminary list of users to play with. We'll let you figure out how to get that thing running. 
+Feel free to add a way to create new users. We've included a rake task somewhere in there that'll give you a preliminary list of users to play with. We'll let you figure out how to get that thing running. 
 
 ### Got it, are there rules to this?
 
@@ -33,7 +33,7 @@ Aside from that, anything goes. As long as the application is able to know who's
 
 * Quality over quantity.
 * Don't forget your fundamentals. MVC and Rest are Best practices for a reason.
-* TDD is optional, though nothing proves good testing than if you can prove your application does what it's supposed to (*cough integrations *cough), 
+* TDD is optional, though nothing demonstrates good testing than if you can prove your application does what it's supposed to (*cough integrations *cough), 
 * Don't be afraid to remove stuff.
 
 
