@@ -23,7 +23,7 @@ class UsersController < ApplicationController
   # So if beard length is smaller than 20 and not 0. 
   # He must have trimmed
   def find_trim
-    @users = User.where("beard_length < 20 AND beard_length != 0")
+    @users = User.where("beard_length < 20 AND beard_length != 0").where(:massaged => [false, nil])
     render 'list'
   end
 
