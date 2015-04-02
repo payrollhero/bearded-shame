@@ -15,7 +15,7 @@ You (we mean the prospective developer candidate) will submit a pull request to 
 
 ### Alright, so what is this application supposed to do?
 
-People have beards. Sometimes you need it trimed, other times you need it shaved. This application tracks who those people are and whether they want one or the other. 
+People have beards. Sometimes you need it trimmed, other times you need it shaved. This application tracks who those people are and whether they want one or the other. 
 
 And also sometimes people like massages too I hear. Maybe track those as well.
 
