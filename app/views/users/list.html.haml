@@ -3,6 +3,16 @@
 %h2
   = link_to 'Add user', new_user_url
 
+%h3 
+  Filter by
+  = link_to 'All', root_url
+  |
+  = link_to 'Trim', root_url + '?action_type=trim'
+  |
+  = link_to 'Massage and Trime', root_url + '?action_type=massage_and_trim'
+  |
+  = link_to 'Shave', root_url + '?action_type=shave'
+
 %table.table-striped.table-bordered
   %tr
     %th Fullname
