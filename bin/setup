@@ -10,6 +10,7 @@ Dir.chdir APP_ROOT do
 
   puts "== Installing dependencies =="
   system "gem install bundler --conservative"
+  system "gem install foreman"
   system "bundle check || bundle install"
 
   puts "\n== Copying .env file =="

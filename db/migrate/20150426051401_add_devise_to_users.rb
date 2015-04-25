@@ -41,7 +41,6 @@ class AddDeviseToUsers < ActiveRecord::Migration
 
       # Uncomment below if timestamps were not included in your original model.
       # t.timestamps
-      t.integer :beard_length, default: 0
       t.boolean :massaged, default: false
 
     end

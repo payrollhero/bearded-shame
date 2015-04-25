@@ -22,12 +22,14 @@ ActiveRecord::Schema.define(version: 20150427041837) do
   create_table "orders", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "massage_type_id"
+    t.integer  "shave_id"
     t.decimal  "cost"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end
 
   add_index "orders", ["massage_type_id"], name: "index_orders_on_massage_type_id"
+  add_index "orders", ["shave_id"], name: "index_orders_on_shave_id"
   add_index "orders", ["user_id"], name: "index_orders_on_user_id"
 
   create_table "prices", force: :cascade do |t|
@@ -46,19 +48,20 @@ ActiveRecord::Schema.define(version: 20150427041837) do
   add_index "user_favorite_massages", ["user_id"], name: "index_user_favorite_massages_on_user_id"
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "email",                  default: "",    null: false
+    t.string   "encrypted_password",     default: "",    null: false
     t.string   "users"
     t.string   "first_name"
     t.string   "last_name"
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",          default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.boolean  "massaged",               default: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

@@ -1,6 +1,5 @@
 class User < ActiveRecord::Base
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+  devise :database_authenticatable, :rememberable, :trackable, :validatable
 
   include Nameable
 
@@ -8,7 +7,15 @@ class User < ActiveRecord::Base
   has_many :orders
   has_one :massage_type, through: :user_favorite_massage
 
-  def self.last_massage_type=(id)
-    self.user_favorite_massage = id
+  def last_massage_type=(id)
+    user_favorite_massage = id
+  end
+
+  def beard_length
+    rand(0...100)
+  end
+
+  def beard_length=(size)
+    # @TODO: send my current beard length to Twitter
   end
 end

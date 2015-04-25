@@ -1,0 +1,14 @@
+.(ng-controller='UserCtrl')
+  %table(class="table table-bordered")
+    %thead
+      %tr
+        %th #
+        %th User id
+        %th Massage type id
+        %th Cost
+    %tbody
+      %tr(ng-repeat='order in orders')
+        %th(scope="row") {{ $index }}
+        %td {{ order.user_id }}
+        %td {{ order.massage_type_id }}
+        %td {{ order.cost }}

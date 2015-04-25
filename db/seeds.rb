@@ -11,6 +11,7 @@ User.create!(users)
 
 
 types = [
+  {name: 'No massage'},
   {name: 'Standard'},
   {name: 'Extended'},
   {name: 'Courtesan'}
@@ -21,6 +22,6 @@ MassageType.create(types)
 items = [
   {name: 'Shave', cost: '100'},
   {name: 'Trim', cost: '50'},
-  {name: 'Trim with massage', cost: '75'}
+  {name: 'Only massage', cost: '50'}
 ]
 Price.create(items)
