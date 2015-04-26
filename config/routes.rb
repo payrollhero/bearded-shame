@@ -16,11 +16,16 @@ Rails.application.routes.draw do
   #
   #
   root 'users#list'
+  get 'massage', to: 'users#find_massage'
+  get 'trim', to: 'users#find_trim'
+  get 'shave', to: 'users#find_shave'
+  
   resources :users do
     member do
       get 'trim'
       get 'massage_and_trim'
       get 'shave'
+
     end
   end
 
