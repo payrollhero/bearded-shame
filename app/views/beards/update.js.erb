@@ -1,0 +1,3 @@
+var newHtml = "<%= escape_javascript(render(:partial => "beards/status", :locals => {:beard => @beard, :user => @beard.user})) %>";
+$("#user-<%= @beard.user_id%>").replaceWith(newHtml);
+$('.r-tooltip').tooltip({placement: 'bottom'});

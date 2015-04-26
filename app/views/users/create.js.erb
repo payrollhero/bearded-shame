@@ -1,0 +1,7 @@
+var newHtml = "<%= escape_javascript(render(:partial => "beards/status", :locals => {:beard => @beard, :user => @user})) %>";
+$("#list-of-users").prepend(newHtml);
+$('.r-tooltip').tooltip({placement: 'bottom'});
+$('#new-user-form input[type=text]').val('');
+$('#new-user-form').toggle();
+$('.new-user-link').show();
+

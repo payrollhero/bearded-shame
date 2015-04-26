@@ -1,0 +1,4 @@
+#users-wrapper
+  %span#list-of-users
+    - @users.each do |user, beard|
+      = render :partial => "status", :locals => {user: user, beard: beard}

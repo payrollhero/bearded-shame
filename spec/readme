@@ -1,0 +1,3 @@
+To perform rspec testing:
+- run 'rake db:test:prepare' (done only once)
+- run 'rspec spec'
