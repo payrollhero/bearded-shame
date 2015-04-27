@@ -1,22 +1,26 @@
 $(document).ready(function(){
   trimClickHandler();
-  // massageAndTrimUser();
-  // shaveUser();
+  massageAndTrimClickHandler();
+  shaveClickHandler();
 });
 
 
+var ajaxifyRequest = function(userId, route){
+  $.ajax({
+    url: '/users/'+userId+route,
+    type: 'PUT'
+  }).done(function(response){
+    console.log(response)
+    alert(response.first_name+" "+response.last_name+" is clean!")
+  })
+}
 
 var trimClickHandler = function(){
   $('.trim').on('click', function(event){
     event.preventDefault();
     var userId = this.id
     var route = $(this).data().url
-    $.ajax({
-      url: '/users/'+userId+route,
-      type: 'PUT',
-    }).done(function(){
-      alert("You are trimmed!")
-    })
+    ajaxifyRequest(userId, route);
   })
 }
 
@@ -25,13 +29,7 @@ var massageAndTrimClickHandler = function(){
     event.preventDefault();
     var userId = this.id
     var route = $(this).data().url
-    console.log(route)
-    $.ajax({
-      url: '/users/'+userId+'/massage_and_trim',
-      type: 'PUT',
-    }).done(function(){
-      alert("You are massaged and trimmed!")
-    })
+    ajaxifyRequest(userId, route);
   })
 };
 
@@ -39,11 +37,7 @@ var shaveClickHandler = function(){
   $('.shave').on('click', function(event){
     event.preventDefault();
     var userId = this.id
-    $.ajax({
-      url: '/users/'+userId+'/shave',
-      type: 'PUT',
-    }).done(function(){
-      alert("You are shaved!")
-    })
+    var route = $(this).data().url
+    ajaxifyRequest(userId, route);
   })
 }
