@@ -13,6 +13,26 @@ class UsersController < ApplicationController
     redirect_to '/'
   end
 
+  def trim
+    content_type :json
+    user = User.find(params[:id])
+    user.update_attribute(:trim, true)
+    user.save
+  end
+
+  def massage_and_trim
+    user = User.find(params[:id])
+    user.update_attributes(:trim => true, :massage => true)
+    user.save
+
+  end
+
+  def shave
+    user = User.find(params[:id])
+    user.update_attribute(:shave, true)
+    user.save
+  end
+
   private
     def user_params
       params.require(:user).permit(:first_name, :last_name, :email, :username, :password)
