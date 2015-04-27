@@ -10,6 +10,7 @@ RSpec.describe User, :type => :model do
       expect(user.shaved).to equal(false)
       expect(user.massaged).to equal(false)
     end
+
     it 'Serve trim user' do
       user.trimming(10)
       expect(user.beard_length).to equal(90)
@@ -38,6 +39,7 @@ RSpec.describe User, :type => :model do
 
     it 'Serve shave user' do
       user.shaving
+      expect(user.beard_length).to equal(0)
       expect(user.shaved).to equal(true)
     end
   end
