@@ -12,3 +12,17 @@
         = link_to 'Massage and Trim', massage_and_trim_user_path(user)
         = link_to 'Shave', shave_user_path(user)
 
+
+%h2 Sign up!
+=form_for :user, :url=>{:controller => 'users', :action=>'create'} do |f|
+  =f.label :first_name
+  =f.text_field :first_name
+  =f.label :last_name
+  =f.text_field :last_name
+  =f.label :email
+  =f.text_field :email
+  =f.label :username
+  =f.text_field :username
+  =f.label :password
+  =f.password_field :password
+  =f.submit
