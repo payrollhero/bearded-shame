@@ -1,0 +1,7 @@
+%h1
+  - if @status == "ok"
+    #{@user.fullname} has been trimed
+  - else
+    Length should be a integer less than beard length
+
+= link_to 'Back to list' ,root_path

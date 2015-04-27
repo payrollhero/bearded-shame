@@ -1,0 +1,16 @@
+%h1 Shave
+= form_tag shaving_user_path, :method => :post do
+  %table.table-striped.table-bordered
+    %tr
+      %td= "Full name"
+      %td= @user.fullname
+    %tr
+      %td= "Beard length"
+      %td= @user.beard_length
+
+    %tr
+      %td
+        = submit_tag 'Shave'
+      %td
+        = link_to 'Back to list' ,root_path
+

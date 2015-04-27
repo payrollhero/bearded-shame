@@ -1,0 +1,24 @@
+%h1 Massage and Trim
+
+= form_tag massaging_and_trimming_user_path, :method => :post do
+  %table.table-striped.table-bordered
+    %tr
+      %td= "Full name"
+      %td= @user.fullname
+    %tr
+      %td= "Beard length"
+      %td= @user.beard_length
+    %tr
+      %td= "Trim length"
+      %td
+        = text_field_tag 'length', '0'
+    %tr
+      %td= "Massage type"
+      %td
+        = select_tag "type", options_for_select([ "Back massage", "Body Massage" ], "Back massage")
+    %tr
+      %td
+        = submit_tag 'Massage and Trim'
+      %td
+        = link_to 'Back to list' ,root_path
+

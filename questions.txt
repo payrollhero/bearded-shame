@@ -1,51 +1,54 @@
 1. What did you learn yesterday/this week?
 
--
+- I read the book MEAN web development
 
 2. What excites or interests you about coding?
 
--
+- Learning new good libraries and frameworks
 
 3. What is a recent technical challenge you experienced and how did you solve it?
 
--
+- AngularJs , there are so much to learn . I read Pro AngularJs and Ng-book
 
 4. Talk about your preferred development environment.
 
--
+- Wifi , a Macbook Pro and a lot of good developers around me
 
 5.Can you describe your workflow when you create a web page?
 
--
+- Analyze the requirements and team capabilities , decide the tech stack , design the architect , coding ,testing , deploy
 
 6. If you have 5 different stylesheets, how would you best integrate them into the site?
 
--
+- Put all of them in stylesheets folder ?
 
 7. Name 3 ways to decrease page load (perceived or actual load time).
 
--
+- Put Js at the bottom of a page
+- Page caching , action caching , fragment caching
+- Use include to fight N+1 issue
 
 8. If you jumped on a project and they used tabs and you used spaces, what would you do?
 
--
+- Follow them
 
 9. In 5 sentences or less, describe how you would create a simple slideshow page.
 
--
+- Use Electric Slide
+- http://patshaughnessy.net/2010/4/28/how-to-create-a-slideshow-using-jquery-and-rails-in-10-minutes-or-less
 
 10. What tools do you use to test your code's performance/quality?
 
--
+- New Relic , Brakeman , Bullet , ...
 
 11. If you could master one technology this year, what would it be?
 
--
+- Node , obj-C , Swift
 
 12. What did you think of this challenge? Do you have any comments or suggestions?
 
--
+- It's wierd , I dont know
 
 13. Do you still wish to proceed with the next step of your application? It is perfectly OK to say 'no'. :)
 
--
+- Yes

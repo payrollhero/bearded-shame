@@ -1,0 +1,21 @@
+%h1 Trim
+
+= form_tag trimming_user_path, :method => :post do
+  %table.table-striped.table-bordered
+    %tr
+      %td= "Full name"
+      %td= @user.fullname
+    %tr
+      %td= "Beard length"
+      %td= @user.beard_length
+    %tr
+      %td= "Trim length"
+      %td
+        = text_field_tag 'length', '0'
+
+    %tr
+      %td
+        = submit_tag 'Trim'
+      %td
+        = link_to 'Back to list' ,root_path
+
