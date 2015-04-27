@@ -18,9 +18,9 @@ Rails.application.routes.draw do
   root 'users#list'
   resources :users do
     member do
-      get 'trim'
-      get 'massage_and_trim'
-      get 'shave'
+      put 'trim'
+      put 'massage_and_trim'
+      put 'shave'
     end
   end
 
