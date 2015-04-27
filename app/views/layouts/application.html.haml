@@ -4,6 +4,20 @@
     %title BeardedShame
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = favicon_link_tag 'mico.ico'
     = csrf_meta_tags
   %body
-    = yield
+    .container-fluid
+      .row.header-content
+        .header-logo
+          = image_tag "logo.png"
+
+        .right.filter-wrapper
+          = select_tag "filter-beard-status", options_for_select(["all"] + Beard::STATUS)
+
+        .new-user-link-wrapper
+          %button.btn.btn-sm.btn-primary.new-user-link.show-form-link Add new user
+          = render :partial => "users/new"
+
+      .row.body
+        = yield

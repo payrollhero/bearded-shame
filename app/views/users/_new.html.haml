@@ -1,0 +1,5 @@
+= form_for User.new, :remote => true, :html => {:id => "new-user-form", :class => 'form form-inline'} do |f|
+  = f.text_field :first_name, :placeholder => "First name", :class => "form-control"
+  = f.text_field :last_name, :placeholder => "Last name", :class => "form-control"
+  = submit_tag "Save", :class => 'btn btn-primary'
+  = link_to "Cancel", 'javascript:void(0)', :class => 'btn btn-default show-form-link'

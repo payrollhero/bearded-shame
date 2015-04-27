@@ -1,0 +1,18 @@
+.beard-status-wrapper.col-lg-2{id: "user-#{user.id}"}
+  %h4
+    = user.fullname
+
+  .options
+    .beard-status-options{:class => "active-#{beard.status}"}
+      - Beard::STATUS.each do |beard_status|
+        - next if beard_status == 'unset'
+        - active_beard = beard_status == beard.status
+        .beard-status.r-tooltip{class: "#{beard_status} " + (active_beard ? 'active' : ''), 'title' => beard_status.titleize, 'data-toogle' => 'tooltip'}
+          - if active_beard
+            &nbsp;
+          - else
+            = link_to raw("&nbsp;"), beard_path(beard.id, status: beard_status), :remote => true, :method => "PUT"
+
+    - massaged_class = beard.is_massaged? ? 'massaged' : 'unmassaged'
+    .user-massaged.r-tooltip{class: massaged_class, title: beard.massaged_label, 'data-toggle' => 'tooltip'}
+      = link_to raw("&nbsp;"), beard_path(beard.id, is_massaged: 'true'), :remote => true, :method => "PUT"

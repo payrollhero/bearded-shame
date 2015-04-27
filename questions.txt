@@ -1,51 +1,89 @@
 1. What did you learn yesterday/this week?
 
--
+- I learned how to list all redis keys current available, and remove those values via keys (or key pattern) in command prompt.
+- I learned how to play the classic game of Battleship for the first time.
+- Uncharted 4 is not available in PS3 which is a total bummer.
 
 2. What excites or interests you about coding?
 
--
+- Learning new things and be able to create solution to problems.
+  When I'm coding, it makes my brain work, and it allows you to strategize on how to tackle a problem, bug or a new feature.
+  Coding is most of the time hard, and sometimes irksome if you have no idea what to do, so you do some research.
+  You learn a lot from the process of searching and reading solutions from other people, and applying it on your own and create scenarios to possibly come up with an idea how to do it.
+  I think despite how hard you struggled to come up with a solution, when you're able to find it, it creates this great feeling.
+  And even more better when you see users are using it, and are happy about it.
+  So I think the rush for that feeling makes coding exciting and interesting.
 
 3. What is a recent technical challenge you experienced and how did you solve it?
 
--
+- We have to implement a feature to track patient data changes based on a given cycle (or period of time). There's a lot of requirements and logic to implement it which makes it even more complex.
+  So how we solved it is we created some possible scenarios to make other areas of the requirements even more clearer,
+  and we also have to remove some unnecessary requirements that are not needed on the initial output of the feature.
+  It took a lot of discussions but we came up with a great strategy, and I was able to make the whole team and the stakeholders on-board about it.
 
 4. Talk about your preferred development environment.
 
--
+- I'm currently coding in Mac OS (both work and personal projects), and my text editor is VIM (I'm using MacVIM on my Mac). And then I should have coffee to break the day.
 
-5.Can you describe your workflow when you create a web page?
+5. Can you describe your workflow when you create a web page?
 
--
+- I initially list all the requirements needed for the web page, and identify all the data that are needed (including the dependencies for each data).
+  Then I create mockups for all the possible areas that are needed for the web page.
+  After the mockups, I create migration files for the needed data, and create specifications for each models and the relationship requirements if there are any.
+  Then I proceed to coding the UI for all the requirements needed. I usually start one workflow and a finish it before I proceed to the next one.
+  One workflow for me means: fetch_data --> render UI --> process data --> re-render UI. Data fetching and processing usually takes time when the requirement is complex, and aside from coding the actual implementation, I always try and determine where to put things where, and how to make it faster and effecient.
+  I'm probably OCD because it annoys me when codes are not organized where and how it should be.
+  And finally, I take most of my time on the design because like I said, I'm OC haha. When the project has a designated UX designer, then I'm probably way faster because then I know how to design it, but if I'm the one who has to think of ways to design it, and code it, then that takes time.
+
+  So yeah, that's how I code. I'm faster on backend than on the front-end basically.
 
 6. If you have 5 different stylesheets, how would you best integrate them into the site?
 
--
+- I probably will find a way to pack them (using an asset packager or minifier) so that loading it will be much faster (especially on production).
+  If these stylesheets are used in all pages, then I will also integrate them on one file using mixins so that when the file is minified, then it's a lot smaller.
 
 7. Name 3 ways to decrease page load (perceived or actual load time).
 
--
+- Optimize fetching data.
+  - Find n+1 queries when fetching data, and refactor code to have few queries as possible.
+  - If the data can be loaded via cache (memory or browser cache), then use it to your advantage.
+- Optimize assets included on page
+  - If there are assets that are not included on the page, then remove them. We don't want extra load time to load these unnecessary js/css files.
+  - Use an asset packager to minify/reduce these files (but making sure it still retains the information in it)
+  - If there are images, if possible, delay loading and load only when needed/viewed.
+- Create the illusion that the page is fast
+  - This is more on perceived faster page load. If you have lots of data to render, apply pagination that will load the data in bits.
+  - Use ajax to your advantage in CRUD data. This will minimize additional page reload, and much fun to use.
 
 8. If you jumped on a project and they used tabs and you used spaces, what would you do?
 
--
+- Oh my god, who uses tabs?! Most probably, if it's okay with the team, I'll replace all tabs to spaces. You can do that in one swift command in VIM so I'll probably do it. But come on, tabs?! Are you using Windows to code?! :)
+- But then I'm again, I'm probably OCD about it.
+
+(PS: I don't really have an OCD, it just feel like it sometimes. You know that feeling, everyone does. )
 
 9. In 5 sentences or less, describe how you would create a simple slideshow page.
 
--
+(Assuming this is a image slideshow page, and image urls are stored/generated via records in db)
+
+- First, I'll only create a fetch functionality to fetch only one photo object, and identify the next photo to show (e.g next photo_id).
+- Then I'm going to create a UI that will display the images, loading the first image fetched.
+- I won't make the page load again for every image so based on my fetch functionality, I'll get the next photo via ajax and render it, and this will continue until all the images are already in the page.
+- I will then make a next-previous functionality and then it's now a legit slideshow.
 
 10. What tools do you use to test your code's performance/quality?
 
--
+- I use RSpec most of the time to create test cases, and use Ruby's Benchmark to simulate the performance of my functions.
 
 11. If you could master one technology this year, what would it be?
 
--
+- PayrollHero. :) Just kidding, I want to learn IOS development again, using Swift maybe.
+  But if I don't master it, then probably Rails 4 and Ruby 2 because in my current job, we still use Rails 2 in Ruby 1.9, so an upgrade to Rails 4, using it on a daily basis and mastering it would be great.
 
 12. What did you think of this challenge? Do you have any comments or suggestions?
 
--
+- I think it's great. I don't have any comments on it, I think it's a great exam for Rails programmer. I used RSpec on my test cases, and it's under spec folder.
 
 13. Do you still wish to proceed with the next step of your application? It is perfectly OK to say 'no'. :)
 
--
+- YES please. :)

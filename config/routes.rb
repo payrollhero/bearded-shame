@@ -15,14 +15,10 @@ Rails.application.routes.draw do
   #   resources :products
   #
   #
-  root 'users#list'
-  resources :users do
-    member do
-      get 'trim'
-      get 'massage_and_trim'
-      get 'shave'
-    end
-  end
+
+  root 'beards#index'
+  resources :users
+  resources :beards
 
   # Example resource route with options:
   #   resources :products do
