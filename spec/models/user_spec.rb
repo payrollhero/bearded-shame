@@ -43,6 +43,13 @@ RSpec.describe User, :type => :model do
       expect(user.massaged).to equal(false)
     end
 
+    it 'Serve trim and massage user with text length' do
+      user.massaging_and_trimming("test","Back massage")
+      expect(user.beard_length).to equal(100)
+      expect(user.trimed).to equal(false)
+      expect(user.massaged).to equal(false)
+    end
+
     it 'Serve shave user' do
       user.shaving
       expect(user.beard_length).to equal(0)
