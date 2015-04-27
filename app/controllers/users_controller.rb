@@ -32,7 +32,6 @@ class UsersController < ApplicationController
     user.update_attribute(:shave, true)
     user.save
     render :json => user
-
   end
 
   private

@@ -10,7 +10,6 @@ var ajaxifyRequest = function(userId, route){
     url: '/users/'+userId+route,
     type: 'PUT'
   }).done(function(response){
-    console.log(response)
     alert(response.first_name+" "+response.last_name+" is clean!")
   })
 }
