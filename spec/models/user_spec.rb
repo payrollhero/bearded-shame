@@ -12,13 +12,13 @@ RSpec.describe User, :type => :model do
     end
 
     it 'Serve trim user' do
-      user.trimming(10)
+      user.trimming('10')
       expect(user.beard_length).to equal(90)
       expect(user.trimed).to equal(true)
     end
 
     it 'Serve trim user with length > beard length' do
-      user.trimming(101)
+      user.trimming('101')
       expect(user.beard_length).to equal(100)
       expect(user.trimed).to equal(false)
     end
@@ -30,14 +30,14 @@ RSpec.describe User, :type => :model do
     end
 
     it 'Serve trim and massage user' do
-      user.massaging_and_trimming(10,"Back massage")
+      user.massaging_and_trimming('10',"Back massage")
       expect(user.beard_length).to equal(90)
       expect(user.trimed).to equal(true)
       expect(user.massaged).to equal(true)
     end
 
     it 'Serve trim and massage user with length > beard length' do
-      user.massaging_and_trimming(101,"Back massage")
+      user.massaging_and_trimming('101',"Back massage")
       expect(user.beard_length).to equal(100)
       expect(user.trimed).to equal(false)
       expect(user.massaged).to equal(false)

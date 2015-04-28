@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   end
 
   def validate_trim_length(length)
-    length.to_i.to_s == length.to_s && self.beard_length > length.to_i && length.to_i > 0
+    length =~ /^[0-9]+$/ && self.beard_length > length.to_i && length.to_i > 0
   end
 
   def trimming(length)
