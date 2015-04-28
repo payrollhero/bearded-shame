@@ -1,9 +1,9 @@
 class UsersController < ApplicationController
 
-  def list
+  def show
     @users = User.all
   end
-  alias :index :list
+  alias :index :show
 
   def new
   end

@@ -10,6 +10,13 @@ let(:user) {User.create(:first_name => "Rebecca", :last_name => "Holzschuh", :em
       expect {user}.to change(User, :count).by(1)
     end
   end
+
+  describe "GET#show" do
+    it "renders show template" do
+    end
+    it "includes new user" do
+      expect(response).to include()
+    end
+  end
 end
 
-#I ran out of time, but I would have liked to add more tests for each method!
