@@ -1,24 +1,23 @@
-%h1 Massage and Trim
+%h1= I18n.t('massageAndTrim')
 
 = form_tag massaging_and_trimming_user_path, :method => :post do
   %table.table-striped.table-bordered
     %tr
-      %td= "Full name"
+      %td= I18n.t('fullName')
       %td= @user.fullname
     %tr
-      %td= "Beard length"
+      %td= I18n.t('beardLength')
       %td= @user.beard_length
     %tr
-      %td= "Trim length"
+      %td= I18n.t('trimLength')
       %td
         = text_field_tag 'length', '0'
     %tr
-      %td= "Massage type"
+      %td= I18n.t('massageType')
       %td
         = select_tag "type", options_for_select([ "Back massage", "Body Massage" ], "Back massage")
     %tr
       %td
-        = submit_tag 'Massage and Trim'
+        = submit_tag I18n.t('massageAndTrim')
       %td
-        = link_to 'Back to list' ,root_path
-
+        = link_to I18n.t('backToList') ,root_path

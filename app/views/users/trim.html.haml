@@ -1,21 +1,21 @@
-%h1 Trim
+%h1= I18n.t('trim')
 
 = form_tag trimming_user_path, :method => :post do
   %table.table-striped.table-bordered
     %tr
-      %td= "Full name"
+      %td= I18n.t('fullName')
       %td= @user.fullname
     %tr
-      %td= "Beard length"
+      %td= I18n.t('beardLength')
       %td= @user.beard_length
     %tr
-      %td= "Trim length"
+      %td= I18n.t('trimLength')
       %td
         = text_field_tag 'length', '0'
 
     %tr
       %td
-        = submit_tag 'Trim'
+        = submit_tag I18n.t('trim')
       %td
-        = link_to 'Back to list' ,root_path
+        = link_to I18n.t('backToList') ,root_path
 

@@ -1,7 +1,7 @@
 %h1
   - if @status == "ok"
-    #{@user.fullname} has been massaged and trimed
+    =I18n.t('userHasBeenMassagedAndTrimed',:username => @user.fullname)
   - else
-    Length should be a integer less than beard length
+    =I18n.t('beardError')
 
-= link_to 'Back to list' ,root_path
+= link_to I18n.t('backToList') ,root_path

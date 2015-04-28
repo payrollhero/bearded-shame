@@ -21,3 +21,15 @@
 
 en:
   hello: "Hello world"
+  fullName: "Full name"
+  beardLength: "Beard length"
+  trimLength: "Trim length"
+  trim: "Trim"
+  backToList: "Back to List"
+  beardError: "Length should be a integer less than beard length"
+  userHasBeenTrimed: "%{username} has been trimed"
+  massageAndTrim: "Massage and Trim"
+  massageType: "Massage type"
+  userHasBeenMassagedAndTrimed: "%{username} has been massaged and trimed"
+  shave: "Shave"
+  userHasBeenShaved: "%{username} has been shaved"
