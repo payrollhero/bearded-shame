@@ -15,21 +15,21 @@ class UsersController < ApplicationController
 
   def trim
     user = User.find(params[:id])
-    user.update_attribute(:trim, true)
+    user.update_attribute(:trimmed, true)
     user.save
     render :json => user
   end
 
   def massage_and_trim
     user = User.find(params[:id])
-    user.update_attributes(:trim => true, :massage => true)
+    user.update_attributes(:trimmed => true, :massaged => true)
     user.save
     render :json => user
   end
 
   def shave
     user = User.find(params[:id])
-    user.update_attribute(:shave, true)
+    user.update_attribute(:shaved, true)
     user.save
     render :json => user
   end
