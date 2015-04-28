@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe User, :type => :model do
-  let!(:user) { User.create(:beard_length => 100)}
+RSpec.describe User, :type => :feature do
+  let!(:user) { User.create(:first_name =>'Peter' , :last_name =>'Adam', :beard_length => 100)}
 
   describe "Serving user" do
 
