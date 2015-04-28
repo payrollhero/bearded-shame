@@ -9,8 +9,8 @@ class User < ActiveRecord::Base
     first_name + " " + last_name
   end
 
-  def validate_trim_length(length,user)
-    if length.to_i.to_s == length.to_s && user.beard_length > length.to_i && length.to_i > 0
+  def validate_trim_length(length)
+    if length.to_i.to_s == length.to_s && self.beard_length > length.to_i && length.to_i > 0
       true
     else
       false
@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
   end
 
   def trimming(length)
-    if validate_trim_length(length,self)
+    if validate_trim_length(length)
       BeardTrimmer.trim(self,length.to_i)
       "ok"
     else
@@ -27,7 +27,7 @@ class User < ActiveRecord::Base
   end
 
   def massaging_and_trimming(length,type)
-    if validate_trim_length(length,self)
+    if validate_trim_length(length)
       BeardTrimmer::WithMassage.trim(self,length.to_i,type)
       "ok"
     else
