@@ -34,6 +34,7 @@ RSpec.describe User, :type => :model do
       expect(user.beard_length).to equal(90)
       expect(user.trimed).to equal(true)
       expect(user.massaged).to equal(true)
+      expect(user.last_massage_type.to_s).to eq('Back massage')
     end
 
     it 'Serve trim and massage user with length > beard length' do
