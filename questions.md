@@ -10,7 +10,7 @@
 4. Talk about your preferred development environment.
 
   > -
-5.Can you describe your workflow when you create a web page?
+5. Can you describe your workflow when you create a web page?
 
   > -
 6. If you have 5 different stylesheets, how would you best integrate them into the site?
