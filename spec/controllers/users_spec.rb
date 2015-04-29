@@ -10,6 +10,7 @@ let(:user) {User.create(:first_name => "Rebecca", :last_name => "Holzschuh", :em
     end
 
     it "adds the user to the database" do
+      User.create(:first_name => "Rebecca")
       expect(User.last.first_name).to eq("Rebecca")
     end
   end
