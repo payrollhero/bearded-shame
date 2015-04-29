@@ -49,6 +49,7 @@ group :development, :test do
   gem 'shoulda-matchers'
   gem 'chromedriver-helper'
   gem 'database_cleaner'
+  gem 'nyan-cat-formatter'
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   # gem 'spring'

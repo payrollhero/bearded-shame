@@ -13,6 +13,8 @@ class UsersController < ApplicationController
     redirect_to '/'
   end
 
+
+
   def trim
     user = User.find(params[:id])
     user.update_attribute(:trimmed, true)
