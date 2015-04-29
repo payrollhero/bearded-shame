@@ -1,7 +1,3 @@
-require "#{Rails.root}/lib/beard_trimmer.rb"
-require "#{Rails.root}/lib/beard_trimmer/with_massage.rb"
-require "#{Rails.root}/lib/beard_shaver.rb"
-
 class User < ActiveRecord::Base
   validates :beard_length, :numericality => { :greater_than_or_equal_to => 0 }
 
