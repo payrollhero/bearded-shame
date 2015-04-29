@@ -34,6 +34,19 @@ class UsersController < ApplicationController
     render :json => user
   end
 
+  def reset
+    user = User.find(params[:id])
+    if user.trimmed == true && user.massaged = true
+      user.update_attributes(:trimmed => false, :massaged => false)
+    elsif user.trimmed == true
+      user.update_attribute(:trimmed, false)
+    elsif user.shaved == true
+      user.update_attribute(:shaved, false)
+    end
+    user.save
+    redirect_to '/'
+  end
+
   private
     def user_params
       params.require(:user).permit(:first_name, :last_name, :email, :username, :password)

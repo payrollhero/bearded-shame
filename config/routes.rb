@@ -21,6 +21,7 @@ Rails.application.routes.draw do
       put 'trim'
       put 'massage_and_trim'
       put 'shave'
+      put 'reset'
     end
   end
 

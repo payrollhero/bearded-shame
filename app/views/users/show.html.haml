@@ -11,7 +11,7 @@
         = link_to 'Trim', trim_user_path(user), :id => "#{user.id}", :class => 'trim', :data => {:url => '/trim'}
         = link_to 'Massage and Trim', massage_and_trim_user_path(user), :id => "#{user.id}", :class=> 'massage-trim', :data => {:url => '/massage_and_trim'}
         = link_to 'Shave', shave_user_path(user), :id => "#{user.id}", :class => "shave", :data => {:url => '/shave'}
-
+        = button_to "Reset", reset_user_path(user), :method => :put
 
 %h2 Sign up!
 =form_for :user, :url=>{:controller => 'users', :action=>'create'} do |f|
