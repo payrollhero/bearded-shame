@@ -21,9 +21,9 @@ ActiveRecord::Schema.define(version: 20150427222624) do
     t.string   "password"
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
-    t.boolean  "trim",       default: false
-    t.boolean  "massage",    default: false
-    t.boolean  "shave",      default: false
+    t.boolean  "trimmed",    default: false
+    t.boolean  "massaged",   default: false
+    t.boolean  "shaved",     default: false
   end
 
 end
