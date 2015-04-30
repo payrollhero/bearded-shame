@@ -15,12 +15,13 @@ Rails.application.routes.draw do
   #   resources :products
   #
   #
-  root 'users#list'
+  root 'users#show'
   resources :users do
     member do
-      get 'trim'
-      get 'massage_and_trim'
-      get 'shave'
+      put 'trim'
+      put 'massage_and_trim'
+      put 'shave'
+      put 'reset'
     end
   end
 
