@@ -13,8 +13,6 @@ class UsersController < ApplicationController
     redirect_to '/'
   end
 
-
-
   def trim
     user = User.find(params[:id])
     user.update_attribute(:trimmed, true)
@@ -39,14 +37,26 @@ class UsersController < ApplicationController
   def reset
     user = User.find(params[:id])
     if user.trimmed == true && user.massaged = true
-      user.update_attributes(:trimmed => false, :massaged => false)
+      reset_massage_and_trim(user)
     elsif user.trimmed == true
-      user.update_attribute(:trimmed, false)
+      reset_trim(user)
     elsif user.shaved == true
-      user.update_attribute(:shaved, false)
+      reset_shave(user)
     end
     user.save
     redirect_to '/'
+  end
+
+  def reset_massage_and_trim(user)
+    user.update_attributes(:trimmed => false, :massaged => false)
+  end
+
+  def reset_trim(user)
+    user.update_attribute(:trimmed, false)
+  end
+
+  def reset_shave(user)
+    user.update_attribute(:shaved, false)
   end
 
   private
