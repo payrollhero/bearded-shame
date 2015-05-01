@@ -38,7 +38,7 @@ gem 'random_data'
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
-
+  gem 'factory_girl_rails'
   gem 'rspec-rails'
 
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -56,4 +56,5 @@ group :test do
   gem 'capybara'
   gem 'selenium-webdriver'
   gem 'poltergeist'
+  gem 'database_cleaner'
 end
