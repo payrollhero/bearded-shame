@@ -5,6 +5,6 @@ class User < ActiveRecord::Base
   validates :last_name,  presence: true
 
   def fullname
-    first_name.to_s + " " + last_name.to_s
+    "#{first_name} #{last_name}"
   end
 end
