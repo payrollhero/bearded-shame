@@ -2,11 +2,11 @@ class UsersController < ApplicationController
 
   before_action :find_user
 
-  skip_before_action :find_user, only: [:index, :create, :reset_trim, :reset_shave, :reset_massage_and_trim]
+  skip_before_action :find_user, only: [:index, :create]
 
   after_action :save_user
 
-  skip_after_action :save_user, only: [:index, :show, :new, :reset]
+  skip_after_action :save_user, only: [:index, :show, :new]
 
   after_action :render_json, only: [:trim, :massage_and_trim, :shave]
 
@@ -38,26 +38,8 @@ class UsersController < ApplicationController
   end
 
   def reset
-    if @user.trimmed == true && @user.massaged == true
-      reset_massage_and_trim(@user)
-    elsif @user.trimmed == true
-      reset_trim(@user)
-    elsif @user.shaved == true
-      reset_shave(@user)
-    end
+    @user.update_attributes trimmed: false, massaged: false, shaved: false
     # redirect_to root_path, notice: "You are reset!"
-  end
-
-  def reset_massage_and_trim(user)
-    user.update_attributes trimmed: false, massaged: false
-  end
-
-  def reset_trim(user)
-    user.update_attribute :trimmed, false
-  end
-
-  def reset_shave(user)
-    user.update_attribute :shaved, false
   end
 
   private
