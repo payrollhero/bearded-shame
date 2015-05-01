@@ -14,7 +14,7 @@ RSpec.describe UsersController, type: :controller do
     end
 
     it "redirects back to the home page after saving a user" do
-      post :create, user: {:first_name => "Rebecca", :last_name => "Holzschuh"}
+      post :create, user: {:first_name => "Rebecca", :last_name => "Holzschuh"
       expect(response).to redirect_to root_path
     end
   end

@@ -1,9 +1,12 @@
 class UsersController < ApplicationController
 
-  def show
+  def index
     @users = User.all
   end
-  alias :index :show
+
+  def show
+    @user = User.find(params[:id])
+  end
 
   def new
   end
