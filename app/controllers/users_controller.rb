@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :set_user , except: [:list]
 
   def list
-    @users = User.all
+    @users = User.all.order(id: :asc)
   end
 
   def trim

@@ -8,7 +8,7 @@
     %tr
       %td= user.fullname
       %td
-        = link_to 'Trim', trim_user_path(user)
-        = link_to 'Massage and Trim', massage_and_trim_user_path(user)
-        = link_to 'Shave', shave_user_path(user)
+        = link_to 'Trim', trim_user_path(user) , :class => "trim"
+        = link_to 'Massage and Trim', massage_and_trim_user_path(user) , :class => "massage_and_trim"
+        = link_to 'Shave', shave_user_path(user) , :class => "shave"
 

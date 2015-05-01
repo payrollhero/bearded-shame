@@ -3,6 +3,7 @@ ENV["RAILS_ENV"] ||= 'test'
 require 'spec_helper'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
+require 'capybara/poltergeist'
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
@@ -40,4 +41,52 @@ RSpec.configure do |config|
   # The different available types are documented in the features, such as in
   # https://relishapp.com/rspec/rspec-rails/docs
   config.infer_spec_type_from_file_location!
+
+
+
+  Capybara.register_driver :chrome do |app|
+    Capybara::Selenium::Driver.new(app, browser: :chrome)
+  end
+  Capybara.register_driver :firefox do |app|
+    Capybara::Selenium::Driver.new(app, browser: :firefox)
+  end
+  Capybara.register_driver :poltergeist do |app|
+    options = {
+      phantomjs_logger: StringIO.new
+    }
+    Capybara::Poltergeist::Driver.new(app, options)
+  end
+  Capybara.register_driver :poltergeist_debug do |app|
+    Capybara::Poltergeist::Driver.new(app, inspector: true)
+  end
+
+  Capybara.javascript_driver = :poltergeist_debug
+  Capybara.default_driver = :poltergeist
+
+  config.around(:each, :chrome) do |example|
+    Capybara.current_driver = :chrome
+    example.call
+    Capybara.use_default_driver
+  end
+
+  config.around(:each, :firefox) do |example|
+    Capybara.current_driver = :firefox
+    example.call
+    Capybara.use_default_driver
+  end
+
+  # Usage: page.driver.debug
+  config.around(:each, :debug) do |example|
+    Capybara.current_driver = :poltergeist_debug
+    example.call
+    Capybara.use_default_driver
+  end
+
+  Capybara.default_driver = :chrome
+  Capybara.register_driver :chrome do |app|
+    Capybara::Selenium::Driver.new(app, :browser => :chrome)
+  end
+
+  include Capybara::DSL
+
 end
