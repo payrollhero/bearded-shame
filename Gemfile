@@ -40,7 +40,7 @@ gem 'random_data'
 group :development, :test do
   gem 'factory_girl_rails'
   gem 'rspec-rails'
-
+  gem 'faker'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
 
