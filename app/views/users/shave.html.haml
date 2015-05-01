@@ -1,4 +1,5 @@
 %h1= I18n.t('shave')
+= image_tag(@user.avatar_url,height: 100)
 = form_tag shaving_user_path, :method => :post do
   %table.table-striped.table-bordered
     %tr

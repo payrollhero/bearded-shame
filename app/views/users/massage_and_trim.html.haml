@@ -1,5 +1,5 @@
 %h1= I18n.t('massageAndTrim')
-
+= image_tag(@user.avatar_url,height: 100)
 = form_tag massaging_and_trimming_user_path, :method => :post do
   %table.table-striped.table-bordered
     %tr

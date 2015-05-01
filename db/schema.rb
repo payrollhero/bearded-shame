@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150427201345) do
+ActiveRecord::Schema.define(version: 20150501170232) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 20150427201345) do
     t.string   "last_massage_type"
     t.boolean  "shaved",            default: false
     t.boolean  "trimed",            default: false
+    t.string   "avatar_url"
   end
 
 end
