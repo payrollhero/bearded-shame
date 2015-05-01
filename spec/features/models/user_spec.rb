@@ -29,7 +29,7 @@ RSpec.describe User, :type => :feature do
         find(".trim",match: :first).click
         fill_in("length",with: 1)
         find("input[type=submit]").click
-        expect(page).to have_content("#{User.first.fullname} has been trimed")
+        expect(page).to have_content(I18n.t('userHasBeenTrimed',username: User.first.fullname ))
 
         visit root_path
         find(".trim",match: :first).click
@@ -49,7 +49,7 @@ RSpec.describe User, :type => :feature do
         find(".trim",match: :first).click
         fill_in("length",with: User.first.beard_length+1)
         find("input[type=submit]").click
-        expect(page).to have_content("Length should be a integer less than beard length")
+        expect(page).to have_content(I18n.t('beardError'))
 
         visit root_path
         find(".trim",match: :first).click
@@ -68,7 +68,7 @@ RSpec.describe User, :type => :feature do
         find(".trim",match: :first).click
         fill_in("length",with: "test")
         find("input[type=submit]").click
-        expect(page).to have_content("Length should be a integer less than beard length")
+        expect(page).to have_content(I18n.t('beardError'))
 
         visit root_path
         find(".trim",match: :first).click
@@ -89,7 +89,7 @@ RSpec.describe User, :type => :feature do
         find(".massage_and_trim",match: :first).click
         fill_in("length",with: 1)
         find("input[type=submit]").click
-        expect(page).to have_content("#{User.first.fullname} has been massaged and trimed")
+        expect(page).to have_content(I18n.t('userHasBeenMassagedAndTrimed',username: User.first.fullname))
 
         visit root_path
         expect_value = old_beard-1
@@ -110,7 +110,7 @@ RSpec.describe User, :type => :feature do
         find(".massage_and_trim",match: :first).click
         fill_in("length",with: User.first.beard_length+1)
         find("input[type=submit]").click
-        expect(page).to have_content("Length should be a integer less than beard length")
+        expect(page).to have_content(I18n.t('beardError'))
 
         visit root_path
         find(".massage_and_trim",match: :first).click
@@ -130,7 +130,7 @@ RSpec.describe User, :type => :feature do
         find(".massage_and_trim",match: :first).click
         fill_in("length",with: "test")
         find("input[type=submit]").click
-        expect(page).to have_content("Length should be a integer less than beard length")
+        expect(page).to have_content(I18n.t('beardError'))
 
         visit root_path
         find(".massage_and_trim",match: :first).click
@@ -147,7 +147,7 @@ RSpec.describe User, :type => :feature do
         visit root_path
         find(".shave",match: :first).click
         find("input[type=submit]").click
-        expect(page).to have_content("#{User.first.fullname} has been shaved")
+        expect(page).to have_content(I18n.t('userHasBeenShaved',username: User.first.fullname))
 
         visit root_path
         find(".shave",match: :first).click
