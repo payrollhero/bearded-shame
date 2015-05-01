@@ -13,7 +13,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.create(user_params)
-    redirect_to '/'
+    redirect_to root_path, alert: "You have successfully signed up!"
   end
 
   def trim

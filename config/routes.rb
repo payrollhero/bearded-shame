@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   #   resources :products
   #
   #
-  root 'users#show'
+  root 'users#index'
   resources :users do
     member do
       put 'trim'
