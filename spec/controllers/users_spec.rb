@@ -3,10 +3,10 @@ require 'rails_helper'
 RSpec.describe UsersController, type: :controller do
 
   describe "create" do
-    let(:user) {User.create(:first_name => "Rebecca", :last_name => "Holzschuh", :email => "rebeccaholzschuh@gmail.com", :username=> "rebecca")}
-    it "adds one user to the database" do
-      expect {user}.to change(User, :count).by(1)
-    end
+    # let(:user) {User.create(:first_name => "Rebecca", :last_name => "Holzschuh", :email => "rebeccaholzschuh@gmail.com", :username=> "rebecca")}
+    # it "adds one user to the database" do
+    #   expect {user}.to change(User, :count).by(1)
+    # end
 
     it "adds the user to the database" do
       User.create(:first_name => "Rebecca")

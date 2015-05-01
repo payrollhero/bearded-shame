@@ -2,11 +2,11 @@ class UsersController < ApplicationController
 
   before_action :find_user
 
-  skip_before_action :find_user, only: [:index, :create]
+  skip_before_action :find_user, only: [:index, :create, :new]
 
   after_action :save_user
 
-  skip_after_action :save_user, only: [:index, :show, :new]
+  skip_after_action :save_user, only: [:index, :show, :new, :create]
 
   after_action :render_json, only: [:trim, :massage_and_trim, :shave]
 
@@ -18,11 +18,16 @@ class UsersController < ApplicationController
   end
 
   def new
+    @user = User.new
   end
 
   def create
-    user = User.create(user_params)
-    # redirect_to root_path, alert: "You have successfully signed up!"
+    @user = User.new(user_params)
+    if @user.save
+      redirect_to root_path, alert: "You have successfully signed up!"
+    else
+      render 'new'
+    end
   end
 
   def trim
