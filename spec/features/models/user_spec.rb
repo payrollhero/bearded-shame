@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe User, :type => :feature do
 
   context 'testing app' do
-    let!(:user) { User.create(:first_name =>'Peter' , :last_name =>'Adam', :beard_length => 100)}
+    let!(:user) { FactoryGirl.create(:user1)}
 
     describe "Serving user" do
 
