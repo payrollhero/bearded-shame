@@ -1,12 +1,10 @@
 require 'spec_helper'
 
 describe 'Beard' do
-  before {
-    user1 = User.create(:first_name => "Paul", :last_name => "Jones")
-  }
+  before { User.create!(:first_name => "Paul", :last_name => "Jones") }
 
   context 'creating/updating a user beard' do
-    let(:user) { User.find_by_first_name('Paul') }
+    let(:user) { User.first }
 
     it 'should not create beard if user_id is null' do
       beard = Beard.new
@@ -20,8 +18,8 @@ describe 'Beard' do
 
     it 'should create user beard with correct parameters' do
       beard = Beard.new
-      beard.user_id = user.id
-      beard.status  = 'unset'
+      beard.user   = user
+      beard.status = 'unset'
       beard.save
 
       expect(beard.errors.messages).to be_blank
@@ -29,8 +27,8 @@ describe 'Beard' do
 
     it 'should not create beard if status is null' do
       beard = Beard.new
-      beard.user_id = user.id
-      beard.status  = nil
+      beard.user   = user
+      beard.status = nil
       beard.save
 
       expect(beard.errors.messages).to_not be_blank
@@ -51,8 +49,8 @@ describe 'Beard' do
       beard.update_status!(:status => 'invalid_status')
 
       expect(beard.errors.messages).to_not be_blank
-      expect(beard.errors.messages[:status_undefined]).to_not be_blank
-      expect(beard.errors.messages[:status_undefined]).to include("beard status invalid")
+      expect(beard.errors.messages[:status]).to_not be_blank
+      expect(beard.errors.messages[:status]).to include("beard status invalid")
     end
 
   end

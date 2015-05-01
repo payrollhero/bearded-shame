@@ -6,12 +6,12 @@ describe 'User' do
     let(:incorrect_params) { {:last_name => "No First Name"}}
 
     it 'should create user with correct parameters' do
-      user = User.create_from_params(correct_params)
+      user = User.create(correct_params)
       expect(user.errors.messages).to be_blank
     end
 
     it 'should not create user with incorrect parameters' do
-      user = User.create_from_params(incorrect_params)
+      user = User.create(incorrect_params)
       expect(user.errors.messages).to_not be_blank
       expect(user.errors.messages[:first_name]).to_not be_blank
       expect(user.errors.messages[:first_name]).to include("can't be blank")

@@ -14,5 +14,5 @@
             = link_to raw("&nbsp;"), beard_path(beard.id, status: beard_status), :remote => true, :method => "PUT"
 
     - massaged_class = beard.is_massaged? ? 'massaged' : 'unmassaged'
-    .user-massaged.r-tooltip{class: massaged_class, title: beard.massaged_label, 'data-toggle' => 'tooltip'}
+    .user-massaged.r-tooltip{class: massaged_class, title: massaged_label(beard), 'data-toggle' => 'tooltip'}
       = link_to raw("&nbsp;"), beard_path(beard.id, is_massaged: 'true'), :remote => true, :method => "PUT"
