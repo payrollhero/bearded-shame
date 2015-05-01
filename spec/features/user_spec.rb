@@ -20,6 +20,7 @@ describe "User", :js => true do
       fill_in 'Last name', with: user.last_name
       fill_in 'Email', with: user.email
       fill_in 'Username', with: user.username
+      fill_in 'Password', with: user.password
       click_on('Save User')
       expect(page).to have_content(user.first_name)
     end

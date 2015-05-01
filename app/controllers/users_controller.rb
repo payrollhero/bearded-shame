@@ -8,8 +8,6 @@ class UsersController < ApplicationController
 
   skip_after_action :save_user, only: [:index, :show, :new, :create]
 
-  after_action :render_json, only: [:trim, :massage_and_trim, :shave]
-
   def index
     @users = User.all
   end
@@ -32,19 +30,22 @@ class UsersController < ApplicationController
 
   def trim
     @user.update_attribute :trimmed, true
+    redirect_to root_path alert: "#{@user.fullname} is trimmed!"
   end
 
   def massage_and_trim
     @user.update_attributes trimmed: true, massaged: true
+    redirect_to root_path alert: "#{@user.fullname} is trimmed and massaged!"
   end
 
   def shave
     @user.update_attribute :shaved, true
+    redirect_to root_path alert: "#{@user.fullname} is shaved!"
   end
 
   def reset
     @user.update_attributes trimmed: false, massaged: false, shaved: false
-    # redirect_to root_path, notice: "You are reset!"
+    redirect_to root_path, notice: "You are reset!"
   end
 
   private
@@ -61,7 +62,4 @@ class UsersController < ApplicationController
     @user.save!
   end
 
-  def render_json
-    render :json => @user
-  end
 end
