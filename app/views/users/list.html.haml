@@ -2,13 +2,18 @@
 
 %table.table-striped.table-bordered
   %tr
-    %th Fullname
-    %th Actions
+    %th= I18n.t('fullName')
+    %th= I18n.t('avatar')
+    %th= I18n.t('actions')
   - @users.each do |user|
     %tr
       %td= user.fullname
       %td
-        = link_to 'Trim', trim_user_path(user) , :class => "trim"
-        = link_to 'Massage and Trim', massage_and_trim_user_path(user) , :class => "massage_and_trim"
-        = link_to 'Shave', shave_user_path(user) , :class => "shave"
-
+        = image_tag(user.avatar_url, height: 50)
+      %td
+        = link_to I18n.t('trim'), trim_user_path(user) , :class => "trim"
+        = link_to I18n.t('massageAndTrim'), massage_and_trim_user_path(user) , :class => "massage_and_trim"
+        = link_to I18n.t('shave'), shave_user_path(user) , :class => "shave"
+  %tr
+    %td
+      = link_to I18n.t('addNew'), create_user_users_path, method: :post

@@ -26,6 +26,10 @@ Rails.application.routes.draw do
       post 'massaging_and_trimming'
       post 'shaving'
     end
+
+    collection do
+      post 'create_user'
+    end
   end
 
   # Example resource route with options:

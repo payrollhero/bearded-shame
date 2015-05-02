@@ -15,7 +15,7 @@
     %tr
       %td= I18n.t('massageType')
       %td
-        = select_tag "type", options_for_select([ "Back massage", "Body Massage" ], "Back massage")
+        = select_tag "type", options_for_select([ I18n.t('backMassage'), I18n.t('bodyMassage'), I18n.t('legMassage') ], "Back massage")
     %tr
       %td
         = submit_tag I18n.t('massageAndTrim')
