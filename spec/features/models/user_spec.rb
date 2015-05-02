@@ -3,33 +3,30 @@ require 'rails_helper'
 RSpec.describe User, :type => :feature do
 
   context 'testing app' do
-    let!(:user) { FactoryGirl.create(:user1)}
+    let!(:user) { FactoryGirl.create(:user) }
+    let!(:user1) { FactoryGirl.create(:user1)}
 
     describe "Serving user" do
 
-      before(:all) do
-        FactoryGirl.create(:user)
-      end
-
       it 'New default user should not be trimed,shaved or massaged' do
-        expect(user.trimed).to equal(false)
-        expect(user.shaved).to equal(false)
-        expect(user.massaged).to equal(false)
+        expect(user1.trimed).to equal(false)
+        expect(user1.shaved).to equal(false)
+        expect(user1.massaged).to equal(false)
       end
 
       it 'Serve trim user' do
-        user.trimming('10')
-        expect(user.beard_length).to equal(90)
-        expect(user.trimed).to equal(true)
+        user1.trimming('10')
+        expect(user1.beard_length).to equal(90)
+        expect(user1.trimed).to equal(true)
       end
 
-      it 'Serve trim user, browser test' do
-        old_beard = User.first.beard_length
+      it 'Serve trim user, browser test' ,:chrome do
+        old_beard = user.beard_length
         visit root_path
         find(".trim",match: :first).click
         fill_in("length",with: 1)
         find("input[type=submit]").click
-        expect(page).to have_content(I18n.t('userHasBeenTrimed',username: User.first.fullname ))
+        expect(page).to have_content(I18n.t('userHasBeenTrimed',username: user.fullname ))
 
         visit root_path
         find(".trim",match: :first).click
@@ -38,16 +35,16 @@ RSpec.describe User, :type => :feature do
       end
 
       it 'Serve trim user with length > beard length' do
-        user.trimming('101')
-        expect(user.beard_length).to equal(100)
-        expect(user.trimed).to equal(false)
+        user1.trimming('101')
+        expect(user1.beard_length).to equal(100)
+        expect(user1.trimed).to equal(false)
       end
 
-      it 'Serve trim user with length > beard length , browser test' do
-        old_beard = User.first.beard_length
+      it 'Serve trim user with length > beard length , browser test' ,:chrome do
+        old_beard = user.beard_length
         visit root_path
         find(".trim",match: :first).click
-        fill_in("length",with: User.first.beard_length+1)
+        fill_in("length",with: user.beard_length+1)
         find("input[type=submit]").click
         expect(page).to have_content(I18n.t('beardError'))
 
@@ -57,13 +54,13 @@ RSpec.describe User, :type => :feature do
       end
 
       it 'Serve trim user with text length' do
-        user.trimming("test")
-        expect(user.beard_length).to equal(100)
-        expect(user.trimed).to equal(false)
+        user1.trimming("test")
+        expect(user1.beard_length).to equal(100)
+        expect(user1.trimed).to equal(false)
       end
 
-      it 'Serve trim user with text length , browser test' do
-        old_beard = User.first.beard_length
+      it 'Serve trim user with text length , browser test' ,:chrome  do
+        old_beard = user.beard_length
         visit root_path
         find(".trim",match: :first).click
         fill_in("length",with: "test")
@@ -76,20 +73,20 @@ RSpec.describe User, :type => :feature do
       end
 
       it 'Serve trim and massage user' do
-        user.massaging_and_trimming('10',"Back massage")
-        expect(user.beard_length).to equal(90)
-        expect(user.trimed).to equal(true)
-        expect(user.massaged).to equal(true)
-        expect(user.last_massage_type.to_s).to eq('Back massage')
+        user1.massaging_and_trimming('10',"Back massage")
+        expect(user1.beard_length).to equal(90)
+        expect(user1.trimed).to equal(true)
+        expect(user1.massaged).to equal(true)
+        expect(user1.last_massage_type.to_s).to eq('Back massage')
       end
 
-      it 'Serve trim and massage user, browser test' do
-        old_beard = User.first.beard_length
+      it 'Serve trim and massage user, browser test' ,:chrome  do
+        old_beard = user.beard_length
         visit root_path
         find(".massage_and_trim",match: :first).click
         fill_in("length",with: 1)
         find("input[type=submit]").click
-        expect(page).to have_content(I18n.t('userHasBeenMassagedAndTrimed',username: User.first.fullname))
+        expect(page).to have_content(I18n.t('userHasBeenMassagedAndTrimed',username: user.fullname))
 
         visit root_path
         expect_value = old_beard-1
@@ -98,17 +95,17 @@ RSpec.describe User, :type => :feature do
       end
 
       it 'Serve trim and massage user with length > beard length' do
-        user.massaging_and_trimming('101',"Back massage")
-        expect(user.beard_length).to equal(100)
-        expect(user.trimed).to equal(false)
-        expect(user.massaged).to equal(false)
+        user1.massaging_and_trimming('101',"Back massage")
+        expect(user1.beard_length).to equal(100)
+        expect(user1.trimed).to equal(false)
+        expect(user1.massaged).to equal(false)
       end
 
-      it 'Serve trim and massage user with length > beard length, browser test' do
-        old_beard = User.first.beard_length
+      it 'Serve trim and massage user with length > beard length, browser test' ,:chrome do
+        old_beard = user.beard_length
         visit root_path
         find(".massage_and_trim",match: :first).click
-        fill_in("length",with: User.first.beard_length+1)
+        fill_in("length",with: user.beard_length+1)
         find("input[type=submit]").click
         expect(page).to have_content(I18n.t('beardError'))
 
@@ -118,14 +115,14 @@ RSpec.describe User, :type => :feature do
       end
 
       it 'Serve trim and massage user with text length' do
-        user.massaging_and_trimming("test","Back massage")
-        expect(user.beard_length).to equal(100)
-        expect(user.trimed).to equal(false)
-        expect(user.massaged).to equal(false)
+        user1.massaging_and_trimming("test","Back massage")
+        expect(user1.beard_length).to equal(100)
+        expect(user1.trimed).to equal(false)
+        expect(user1.massaged).to equal(false)
       end
 
-      it 'Serve trim and massage user with text length, browser test' do
-        old_beard = User.first.beard_length
+      it 'Serve trim and massage user with text length, browser test' ,:chrome  do
+        old_beard = user.beard_length
         visit root_path
         find(".massage_and_trim",match: :first).click
         fill_in("length",with: "test")
@@ -138,16 +135,16 @@ RSpec.describe User, :type => :feature do
       end
 
       it 'Serve shave user' do
-        user.shaving
-        expect(user.beard_length).to equal(0)
-        expect(user.shaved).to equal(true)
+        user1.shaving
+        expect(user1.beard_length).to equal(0)
+        expect(user1.shaved).to equal(true)
       end
 
-      it 'Serve trim and massage user with text length, browser test' do
+      it 'Serve trim and massage user with text length, browser test' ,:chrome  do
         visit root_path
         find(".shave",match: :first).click
         find("input[type=submit]").click
-        expect(page).to have_content(I18n.t('userHasBeenShaved',username: User.first.fullname))
+        expect(page).to have_content(I18n.t('userHasBeenShaved',username: user.fullname))
 
         visit root_path
         find(".shave",match: :first).click
