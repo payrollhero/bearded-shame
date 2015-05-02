@@ -1,6 +1,11 @@
 
 class UsersController < ApplicationController
-  before_action :set_user , except: [:list]
+  before_action :set_user , except: [:list, :create_user]
+
+  def create_user
+    User.add_new
+    redirect_to action: :list
+  end
 
   def list
     @users = User.all.order(id: :asc)
