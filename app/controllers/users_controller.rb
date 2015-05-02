@@ -22,7 +22,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to root_path, alert: "You have successfully signed up!"
+      redirect_to root_path, notice: "You have successfully signed up!"
     else
       render 'new'
     end
@@ -30,17 +30,17 @@ class UsersController < ApplicationController
 
   def trim
     @user.update_attribute :trimmed, true
-    redirect_to root_path alert: "#{@user.fullname} is trimmed!"
+    redirect_to root_path, notice: "#{@user.fullname} is trimmed!"
   end
 
   def massage_and_trim
     @user.update_attributes trimmed: true, massaged: true
-    redirect_to root_path alert: "#{@user.fullname} is trimmed and massaged!"
+    redirect_to root_path, notice: "#{@user.fullname} is trimmed and massaged!"
   end
 
   def shave
     @user.update_attribute :shaved, true
-    redirect_to root_path alert: "#{@user.fullname} is shaved!"
+    redirect_to root_path, notice: "#{@user.fullname} is shaved!"
   end
 
   def reset
