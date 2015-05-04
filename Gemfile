@@ -24,6 +24,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'random_data'
 # gem 'bootstrap-sass'
+  ## Bootstrap was getting in the way of my Capybara tests. Since the app isn't really using Bootstrap I chose to leave it out.
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -53,6 +54,7 @@ group :development, :test do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   # gem 'spring'
+    ## I've had problems with Spring in the past with installing rspec and generating files, so I try to avoid using it.
   gem 'haml'
 end
 
