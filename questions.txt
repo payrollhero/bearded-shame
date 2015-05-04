@@ -1,51 +1,53 @@
 1. What did you learn yesterday/this week?
 
--
+- I learned a lot about Rspec
 
 2. What excites or interests you about coding?
 
--
+- It's crazy that by typing things on a keyboard, I can make things happen on a browser or in a database.
 
 3. What is a recent technical challenge you experienced and how did you solve it?
 
--
+- I was doing a hackathon and the stack included Node.js and React - neither of which I had any experience in. I was having a lot of trouble with a Node tutorial, so I Googled around and I was able to parse a good explanation of asynchronous streaming.
 
 4. Talk about your preferred development environment.
 
--
+- My preferred environment is one with some people around to ask questions to/ bounce ideas off of, but at the same time I'd have my own space to focus.
 
 5.Can you describe your workflow when you create a web page?
 
--
+- I like to wireframe and then make a list of things I have to do starting with the database schema (if I'm starting from scratch), and then I get to work. I often add things to the list as I work as well.
 
 6. If you have 5 different stylesheets, how would you best integrate them into the site?
 
--
+- I would put them in my HTML file in order of relevance and specificity; the least specific would go on top and the most specific would go on the bottom of the stylesheets. For example, in my personal website I have 3 stylesheets - normalize.css on top, a grid system next, and then my page's specific css file.
 
 7. Name 3 ways to decrease page load (perceived or actual load time).
 
--
+- Compress images
+- Load the important stuff first (i.e. load an article before a sidebar )
+- Make less HTTP requests
 
 8. If you jumped on a project and they used tabs and you used spaces, what would you do?
 
--
+- Start using tabs
 
 9. In 5 sentences or less, describe how you would create a simple slideshow page.
 
--
+- First I would Google slideshow pages. I would find instructions and documentation and try to follow it.
 
 10. What tools do you use to test your code's performance/quality?
 
--
+- Benchmark
 
 11. If you could master one technology this year, what would it be?
 
--
+- Rails
 
 12. What did you think of this challenge? Do you have any comments or suggestions?
 
--
+- I really appreciated all of the feedback; I learned a whole lot and I am grateful that you've taken the time to read my code and give me feedback and advice.
 
 13. Do you still wish to proceed with the next step of your application? It is perfectly OK to say 'no'. :)
 
--
+- Yes!
