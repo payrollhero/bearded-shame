@@ -1,0 +1,22 @@
+.%label Cut length
+%input.form-control(ng-model="cutLength")
+
+
+%table(class="table table-bordered")
+  %thead
+    %tr
+      %th #
+      %th Name
+      %th Cost
+      %th Massage
+      %th Actions
+  %tbody
+    %tr(ng-repeat="el in priceList")
+      %th(scope="row") {{ $index }}
+      %td {{ el.name }}
+      %td {{ el.cost }}
+      %td
+        %select.form-control(ng-model="$root.favoriteMassage" ng-options="massage.name for massage in massages track by massage.id")
+      %td
+        %input.btn.btn-primary(type="button" value="Order" ng-click="new(el.id)")
+
