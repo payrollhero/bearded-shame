@@ -4,10 +4,6 @@
 
 ### What is this? What am I doing here?
 
-2 things.
-
-#### 1st, Fork this repository and submit a pull request.
-
 This application is designed to gauge a PayrollHero applicant's:
 
 * familiarity with code patterns,
@@ -15,16 +11,44 @@ This application is designed to gauge a PayrollHero applicant's:
 * ability to write tests and documentation, and
 * command of Ruby and Rails as a whole
 
+Fork this repository and submit a pull request.
+
 You (we mean the prospective developer candidate) will submit a pull request to this repository containing any refactorings, tests, documentation, and improvements to demonstrate your skills and experience.
 
-#### 2nd, there is a file named `questions.txt` on the first level directory of this repository.
+On your pull request description use the template below:
 
-Answer those questions by **modifying the file itself** in this format:
 
-```
-1. What is the answer to the Ultiate Question of Life, the Universe, and Everyting?
+```md
+This pull request showcases {{my awesome skills}}.
 
-- 42
+
+Here are the issues that I've addressed in this pull request:
+
+  * {{ Multiple spaces between two words. }}
+
+
+I've noticed a few things in the current code that didn't feel right but wasn't able
+to address at the moment. They are the following:
+
+  * {{ There are no trolls under the bridge. }}
+
+
+I've learned a few stuff from this exercise. They are:
+
+  * {{ The author of this exercise committed a crime to the software development
+  community. }}
+
+
+If this project used `tabs` instead of `spaces` I would have {{ used tabs also | used
+spaces regardless | changed all tabs to spaces }}.
+
+
+I have a few suggestions for this exercise. They are:
+
+  * {{ Use more gifs. }}
+
+
+{{ I would like to continue this job application. || I want to back out. }}
 ```
 
 ### Alright, so what is this application supposed to do?
