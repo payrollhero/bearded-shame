@@ -1,2 +1,2 @@
-%h1= I18n.t('userHasBeenShaved',:username => @user.fullname)
-= link_to I18n.t('backToList') ,root_path
+%h1= t('shavingPage.userHasBeenShaved', :username => @user.fullname)
+= link_to t('shavingPage.backToList'), root_path

@@ -1,7 +1,7 @@
 %h1
-  - if @status == "ok"
-    =I18n.t('userHasBeenTrimed',:username => @user.fullname)
+  - if @status
+    =t('trimmingPage.userHasBeenTrimed', :username => @user.fullname)
   - else
-    =I18n.t('beardError')
+    =t('trimmingPage.beardError')
 
-= link_to I18n.t('backToList') ,root_path
+= link_to t('trimmingPage.backToList'), root_path

@@ -1,23 +1,23 @@
-%h1= I18n.t('massageAndTrim')
-= image_tag(@user.avatar_url,height: 100)
+%h1= t('massageAndTrimPage.massageAndTrim')
+= image_tag(@user.avatar_url, height: 100)
 = form_tag massaging_and_trimming_user_path, :method => :post do
   %table.table-striped.table-bordered
     %tr
-      %td= I18n.t('fullName')
+      %td= t('massageAndTrimPage.fullName')
       %td= @user.fullname
     %tr
-      %td= I18n.t('beardLength')
+      %td= t('massageAndTrimPage.beardLength')
       %td.beardLength= @user.beard_length
     %tr
-      %td= I18n.t('trimLength')
+      %td= t('massageAndTrimPage.trimLength')
       %td
         = text_field_tag 'length', '0'
     %tr
-      %td= I18n.t('massageType')
+      %td= t('massageAndTrimPage.massageType')
       %td
-        = select_tag "type", options_for_select([ I18n.t('backMassage'), I18n.t('bodyMassage'), I18n.t('legMassage') ], "Back massage")
+        = select_tag "type", options_for_select([ t('massageAndTrimPage.backMassage'), t('massageAndTrimPage.bodyMassage'), t('massageAndTrimPage.legMassage') ], t('massageAndTrimPage.backMassage'))
     %tr
       %td
-        = submit_tag I18n.t('massageAndTrim')
+        = submit_tag t('massageAndTrimPage.massageAndTrim')
       %td
-        = link_to I18n.t('backToList') ,root_path
+        = link_to t('massageAndTrimPage.backToList'), root_path

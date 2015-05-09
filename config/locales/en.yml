@@ -20,23 +20,60 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
-  fullName: "Full name"
-  beardLength: "Beard length"
-  trimLength: "Trim length"
-  trim: "Trim"
-  backToList: "Back to List"
-  beardError: "Length should be a integer less than beard length"
-  userHasBeenTrimed: "%{username} has been trimed"
-  massageAndTrim: "Massage and Trim"
-  massageType: "Massage type"
-  userHasBeenMassagedAndTrimed: "%{username} has been massaged and trimed"
-  shave: "Shave"
-  userHasBeenShaved: "%{username} has been shaved"
-  addNew: "Add new User"
-  avatar: "Avatar"
-  actions: "Actions"
-  backMassage: "Back massage"
-  bodyMassage: "Body massage"
-  legMassage: "Leg massage"
-  users: "Users"
+  listPage:
+    fullName: "Full name"
+    avatar: "Avatar"
+    actions: "Actions"
+    users: "Users"
+    trim: "Trim"
+    massageAndTrim: "Massage and Trim"
+    shave: "Shave"
+    addNew: "Add new User"
+
+  massageAndTrimPage:
+    massageAndTrim: "Massage and Trim"
+    fullName: "Full name"
+    beardLength: "Beard length"
+    trimLength: "Trim length"
+    massageType: "Massage type"
+    backMassage: "Back massage"
+    bodyMassage: "Body massage"
+    legMassage: "Leg massage"
+    backToList: "Back to List"
+
+  massageAndTrimmingPage:
+    userHasBeenMassagedAndTrimed: "%{username} has been massaged and trimed"
+    beardError: "Length should be a integer less than beard length"
+    backToList: "Back to List"
+
+  shavePage:
+    shave: "Shave"
+    fullName: "Full name"
+    beardLength: "Beard length"
+    backToList: "Back to List"
+
+  shavingPage:
+    userHasBeenShaved: "%{username} has been shaved"
+    backToList: "Back to List"
+
+  trimPage:
+    trim: "Trim"
+    fullName: "Full name"
+    beardLength: "Beard length"
+    trimLength: "Trim length"
+    backToList: "Back to List"
+
+  trimmingPage:
+    userHasBeenTrimed: "%{username} has been trimed"
+    beardError: "Length should be a integer less than beard length"
+    backToList: "Back to List"
+
+
+
+
+
+
+
+
+
+

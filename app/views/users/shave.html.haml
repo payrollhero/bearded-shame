@@ -1,17 +1,17 @@
-%h1= I18n.t('shave')
-= image_tag(@user.avatar_url,height: 100)
+%h1= t('shavePage.shave')
+= image_tag(@user.avatar_url, height: 100)
 = form_tag shaving_user_path, :method => :post do
   %table.table-striped.table-bordered
     %tr
-      %td= I18n.t('fullName')
+      %td= t('shavePage.fullName')
       %td= @user.fullname
     %tr
-      %td= I18n.t('beardLength')
+      %td= t('shavePage.beardLength')
       %td.beardLength= @user.beard_length
 
     %tr
       %td
-        = submit_tag I18n.t('shave')
+        = submit_tag t('shavePage.shave')
       %td
-        = link_to I18n.t('backToList') ,root_path
+        = link_to t('shavePage.backToList'), root_path
 

@@ -22,7 +22,7 @@ class UsersController < ApplicationController
   end
 
   def massaging_and_trimming
-    @status = @user.massaging_and_trimming(params[:length],params[:type])
+    @status = @user.massaging_and_trimming(params[:length], params[:type])
   end
 
   def shave

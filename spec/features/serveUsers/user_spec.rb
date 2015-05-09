@@ -23,13 +23,13 @@ RSpec.describe User, :type => :feature do
       it 'Serve trim user, browser test' ,:chrome do
         old_beard = user.beard_length
         visit root_path
-        find(".trim",match: :first).click
-        fill_in("length",with: 1)
+        find(".trim", match: :first).click
+        fill_in("length", with: 1)
         find("input[type=submit]").click
-        expect(page).to have_content(I18n.t('userHasBeenTrimed',username: user.fullname ))
+        expect(page).to have_content(I18n.t('trimmingPage.userHasBeenTrimed', username: user.fullname ))
 
         visit root_path
-        find(".trim",match: :first).click
+        find(".trim", match: :first).click
         expect_value = old_beard-1
         expect(find(".beardLength").text).to eq(expect_value.to_s)
       end
@@ -43,13 +43,13 @@ RSpec.describe User, :type => :feature do
       it 'Serve trim user with length > beard length , browser test' ,:chrome do
         old_beard = user.beard_length
         visit root_path
-        find(".trim",match: :first).click
-        fill_in("length",with: user.beard_length+1)
+        find(".trim", match: :first).click
+        fill_in("length", with: user.beard_length+1)
         find("input[type=submit]").click
-        expect(page).to have_content(I18n.t('beardError'))
+        expect(page).to have_content(I18n.t('trimmingPage.beardError'))
 
         visit root_path
-        find(".trim",match: :first).click
+        find(".trim", match: :first).click
         expect(find(".beardLength").text).to eq(old_beard.to_s)
       end
 
@@ -62,13 +62,13 @@ RSpec.describe User, :type => :feature do
       it 'Serve trim user with text length , browser test' ,:chrome  do
         old_beard = user.beard_length
         visit root_path
-        find(".trim",match: :first).click
-        fill_in("length",with: "test")
+        find(".trim", match: :first).click
+        fill_in("length", with: "test")
         find("input[type=submit]").click
-        expect(page).to have_content(I18n.t('beardError'))
+        expect(page).to have_content(I18n.t('trimmingPage.beardError'))
 
         visit root_path
-        find(".trim",match: :first).click
+        find(".trim", match: :first).click
         expect(find(".beardLength").text).to eq(old_beard.to_s)
       end
 
@@ -83,14 +83,14 @@ RSpec.describe User, :type => :feature do
       it 'Serve trim and massage user, browser test' ,:chrome  do
         old_beard = user.beard_length
         visit root_path
-        find(".massage_and_trim",match: :first).click
-        fill_in("length",with: 1)
+        find(".massage_and_trim", match: :first).click
+        fill_in("length", with: 1)
         find("input[type=submit]").click
-        expect(page).to have_content(I18n.t('userHasBeenMassagedAndTrimed',username: user.fullname))
+        expect(page).to have_content(I18n.t('massageAndTrimmingPage.userHasBeenMassagedAndTrimed',username: user.fullname))
 
         visit root_path
         expect_value = old_beard-1
-        find(".massage_and_trim",match: :first).click
+        find(".massage_and_trim", match: :first).click
         expect(find(".beardLength").text).to eq(expect_value.to_s)
       end
 
@@ -104,18 +104,18 @@ RSpec.describe User, :type => :feature do
       it 'Serve trim and massage user with length > beard length, browser test' ,:chrome do
         old_beard = user.beard_length
         visit root_path
-        find(".massage_and_trim",match: :first).click
-        fill_in("length",with: user.beard_length+1)
+        find(".massage_and_trim", match: :first).click
+        fill_in("length", with: user.beard_length+1)
         find("input[type=submit]").click
-        expect(page).to have_content(I18n.t('beardError'))
+        expect(page).to have_content(I18n.t('massageAndTrimmingPage.beardError'))
 
         visit root_path
-        find(".massage_and_trim",match: :first).click
+        find(".massage_and_trim", match: :first).click
         expect(find(".beardLength").text).to eq(old_beard.to_s)
       end
 
       it 'Serve trim and massage user with text length' do
-        user1.massaging_and_trimming("test","Back massage")
+        user1.massaging_and_trimming("test", "Back massage")
         expect(user1.beard_length).to equal(100)
         expect(user1.trimed).to equal(false)
         expect(user1.massaged).to equal(false)
@@ -124,13 +124,13 @@ RSpec.describe User, :type => :feature do
       it 'Serve trim and massage user with text length, browser test' ,:chrome  do
         old_beard = user.beard_length
         visit root_path
-        find(".massage_and_trim",match: :first).click
-        fill_in("length",with: "test")
+        find(".massage_and_trim", match: :first).click
+        fill_in("length", with: "test")
         find("input[type=submit]").click
-        expect(page).to have_content(I18n.t('beardError'))
+        expect(page).to have_content(I18n.t('massageAndTrimmingPage.beardError'))
 
         visit root_path
-        find(".massage_and_trim",match: :first).click
+        find(".massage_and_trim", match: :first).click
         expect(find(".beardLength").text).to eq(old_beard.to_s)
       end
 
@@ -142,12 +142,12 @@ RSpec.describe User, :type => :feature do
 
       it 'Serve trim and massage user with text length, browser test' ,:chrome  do
         visit root_path
-        find(".shave",match: :first).click
+        find(".shave", match: :first).click
         find("input[type=submit]").click
-        expect(page).to have_content(I18n.t('userHasBeenShaved',username: user.fullname))
+        expect(page).to have_content(I18n.t('shavingPage.userHasBeenShaved',username: user.fullname))
 
         visit root_path
-        find(".shave",match: :first).click
+        find(".shave", match: :first).click
         expect(find(".beardLength").text).to eq("0")
       end
 

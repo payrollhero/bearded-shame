@@ -1,22 +1,22 @@
-%h1= I18n.t('trim')
-= image_tag(@user.avatar_url,height: 100)
+%h1= t('trimPage.trim')
+= image_tag(@user.avatar_url, height: 100)
 
 = form_tag trimming_user_path, :method => :post do
   %table.table-striped.table-bordered
     %tr
-      %td= I18n.t('fullName')
+      %td= t('trimPage.fullName')
       %td= @user.fullname
     %tr
-      %td= I18n.t('beardLength')
+      %td= t('trimPage.beardLength')
       %td.beardLength= @user.beard_length
     %tr
-      %td= I18n.t('trimLength')
+      %td= t('trimPage.trimLength')
       %td
         = text_field_tag 'length', '0'
 
     %tr
       %td
-        = submit_tag I18n.t('trim')
+        = submit_tag t('trimPage.trim')
       %td
-        = link_to I18n.t('backToList') ,root_path
+        = link_to t('trimPage.backToList'), root_path
 
