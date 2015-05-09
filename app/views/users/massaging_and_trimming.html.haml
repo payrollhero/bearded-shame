@@ -1,0 +1,7 @@
+%h1
+  - if @status
+    =t('massageAndTrimmingPage.userHasBeenMassagedAndTrimed', :username => @user.fullname)
+  - else
+    =t('massageAndTrimmingPage.beardError')
+
+= link_to t('massageAndTrimmingPage.backToList'), root_path

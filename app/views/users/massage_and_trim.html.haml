@@ -1,0 +1,23 @@
+%h1= t('massageAndTrimPage.massageAndTrim')
+= image_tag(@user.avatar_url, height: 100)
+= form_tag massaging_and_trimming_user_path, :method => :post do
+  %table.table-striped.table-bordered
+    %tr
+      %td= t('massageAndTrimPage.fullName')
+      %td= @user.fullname
+    %tr
+      %td= t('massageAndTrimPage.beardLength')
+      %td.beardLength= @user.beard_length
+    %tr
+      %td= t('massageAndTrimPage.trimLength')
+      %td
+        = text_field_tag 'length', '0'
+    %tr
+      %td= t('massageAndTrimPage.massageType')
+      %td
+        = select_tag "type", options_for_select([ t('massageAndTrimPage.backMassage'), t('massageAndTrimPage.bodyMassage'), t('massageAndTrimPage.legMassage') ], t('massageAndTrimPage.backMassage'))
+    %tr
+      %td
+        = submit_tag t('massageAndTrimPage.massageAndTrim')
+      %td
+        = link_to t('massageAndTrimPage.backToList'), root_path

@@ -1,0 +1,17 @@
+%h1= t('shavePage.shave')
+= image_tag(@user.avatar_url, height: 100)
+= form_tag shaving_user_path, :method => :post do
+  %table.table-striped.table-bordered
+    %tr
+      %td= t('shavePage.fullName')
+      %td= @user.fullname
+    %tr
+      %td= t('shavePage.beardLength')
+      %td.beardLength= @user.beard_length
+
+    %tr
+      %td
+        = submit_tag t('shavePage.shave')
+      %td
+        = link_to t('shavePage.backToList'), root_path
+

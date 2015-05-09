@@ -1,14 +1,19 @@
-%h1 Users
+%h1= t('listPage.users')
 
 %table.table-striped.table-bordered
   %tr
-    %th Fullname
-    %th Actions
+    %th= t('listPage.fullName')
+    %th= t('listPage.avatar')
+    %th= t('listPage.actions')
   - @users.each do |user|
     %tr
       %td= user.fullname
       %td
-        = link_to 'Trim', trim_user_path(user)
-        = link_to 'Massage and Trim', massage_and_trim_user_path(user)
-        = link_to 'Shave', shave_user_path(user)
-
+        = image_tag(user.avatar_url, height: 50)
+      %td
+        = link_to t('listPage.trim'), trim_user_path(user) , :class => "trim"
+        = link_to t('listPage.massageAndTrim'), massage_and_trim_user_path(user) , :class => "massage_and_trim"
+        = link_to t('listPage.shave'), shave_user_path(user) , :class => "shave"
+  %tr
+    %td
+      = link_to t('listPage.addNew'), create_user_users_path, method: :post

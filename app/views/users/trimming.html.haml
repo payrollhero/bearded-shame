@@ -1,0 +1,7 @@
+%h1
+  - if @status
+    =t('trimmingPage.userHasBeenTrimed', :username => @user.fullname)
+  - else
+    =t('trimmingPage.beardError')
+
+= link_to t('trimmingPage.backToList'), root_path

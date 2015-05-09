@@ -21,6 +21,14 @@ Rails.application.routes.draw do
       get 'trim'
       get 'massage_and_trim'
       get 'shave'
+
+      post 'trimming'
+      post 'massaging_and_trimming'
+      post 'shaving'
+    end
+
+    collection do
+      post 'create_user'
     end
   end
 

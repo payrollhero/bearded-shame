@@ -1,0 +1,22 @@
+%h1= t('trimPage.trim')
+= image_tag(@user.avatar_url, height: 100)
+
+= form_tag trimming_user_path, :method => :post do
+  %table.table-striped.table-bordered
+    %tr
+      %td= t('trimPage.fullName')
+      %td= @user.fullname
+    %tr
+      %td= t('trimPage.beardLength')
+      %td.beardLength= @user.beard_length
+    %tr
+      %td= t('trimPage.trimLength')
+      %td
+        = text_field_tag 'length', '0'
+
+    %tr
+      %td
+        = submit_tag t('trimPage.trim')
+      %td
+        = link_to t('trimPage.backToList'), root_path
+
