@@ -7,14 +7,17 @@ class User < ActiveRecord::Base
 
   def trim
     self.status = "Trimmed"
+    self.save
   end
 
   def massage_and_trim
     self.status = "Massaged and Trimmed"
+    self.save
   end
 
-  def shaved
+  def shave
     self.status = "Shaved"
+    self.save
   end
 
   def grow_beard
@@ -23,10 +26,11 @@ class User < ActiveRecord::Base
 
   def has_beard?
     if self.status == "Shaved"
-      if((DateTime.now - self.updated_at) / 60 / 60) < 24
+      if((Time.now - self.updated_at) / 60 / 60) < 24
         return false
       end
     end
     return true
   end
+
 end

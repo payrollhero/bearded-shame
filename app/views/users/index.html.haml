@@ -11,12 +11,12 @@
           %tr
             %td
               = user.fullname
-            %td
+            %td.status
               = user.status
             %td
-              = link_to 'Trim', trim_user_path(user)
+              = link_to 'Trim', trim_user_path(user), :data => {:action => "user_action"}
             %td
-              = link_to 'Massage and Trim', massage_and_trim_user_path(user)
+              = link_to 'Massage and Trim', massage_and_trim_user_path(user), :data => {:action => "user_action"}
             %td
-              = link_to 'Shave', shave_user_path(user)
+              = link_to 'Shave', shave_user_path(user), :data => {:action => "user_action"}
 
