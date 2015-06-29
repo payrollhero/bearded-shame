@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   before_create :grow_beard
+  before_save :hash_password
 
   def fullname
     first_name + " " + last_name
@@ -31,6 +32,10 @@ class User < ActiveRecord::Base
       end
     end
     return true
+  end
+
+  def hash_password
+    self.password = Digest::MD5.hexdigest(self.password)
   end
 
 end
