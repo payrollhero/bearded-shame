@@ -1,14 +1,22 @@
-%h1 Users
-
-%table.table-striped.table-bordered
-  %tr
-    %th Fullname
-    %th Actions
-  - @users.each do |user|
-    %tr
-      %td= user.fullname
-      %td
-        = link_to 'Trim', trim_user_path(user)
-        = link_to 'Massage and Trim', massage_and_trim_user_path(user)
-        = link_to 'Shave', shave_user_path(user)
+.container
+  %h1 Users
+  .row
+    .col-md-12
+      %table.table-striped.table-bordered.table
+        %tr
+          %th Fullname
+          %th Currently
+          %th.text-center{colspan: 3} Actions
+        - @users.each do |user|
+          %tr
+            %td
+              = user.fullname
+            %td
+              = user.status
+            %td
+              = link_to 'Trim', trim_user_path(user)
+            %td
+              = link_to 'Massage and Trim', massage_and_trim_user_path(user)
+            %td
+              = link_to 'Shave', shave_user_path(user)
 

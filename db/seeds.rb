@@ -7,5 +7,6 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 20.times do
-  User.create(first_name: Random.firstname, last_name: Random.lastname, email: Random.email)
+  #Assuming only Men have beards
+  User.create(first_name: Random.firstname_male, last_name: Random.lastname, email: Random.email)
 end
