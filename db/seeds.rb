@@ -5,3 +5,8 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+20.times do
+  #Assuming only Men have beards
+  User.create(first_name: Random.firstname_male, last_name: Random.lastname, email: Random.email, password: Random.alphanumeric)
+end

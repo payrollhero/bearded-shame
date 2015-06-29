@@ -1,0 +1,14 @@
+.container
+  .row
+    .col-md-6
+      .panel.panel-default
+        .panel-heading Details of #{@user.fullname}
+        .panel-body
+          %p First Name: #{@user.first_name}
+          %p Last Name: #{@user.last_name}
+          %p Email: #{@user.email}
+          %p Username: #{@user.username}
+          %p Status: #{@user.status}
+          %p User lastly #{@user.status} in #{time_ago_in_words(@user.updated_at)} ago.
+
+          = link_to "Edit User details", edit_user_path(@user)
