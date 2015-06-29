@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
-  def list
+  def index
     @users = User.all
   end
-  alias :index :list
+
 end
