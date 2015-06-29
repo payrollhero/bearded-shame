@@ -1,0 +1,14 @@
+= form_for(@user) do |f|
+  %p First Name:
+  = f.text_field :first_name, :class => "form-control", required: true, autocomplete: "off"
+  %p Last Name:
+  = f.text_field :last_name, :class => "form-control", required: true, autocomplete: "off"
+  %p Email:
+  = f.email_field :email, :class => "form-control", required: true, autocomplete: "off"
+  %p Username:
+  = f.text_field :username, :class => "form-control", required: true, autocomplete: "off"
+  %p Password:
+  = f.password_field :password, :class => "form-control", required: true, autocomplete: "off"
+  %div{:style => "padding: 20px;"}
+    = f.submit class: "btn btn-primary"
+    = link_to 'Cancel', root_path, class: "link"

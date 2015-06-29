@@ -1,5 +1,8 @@
 .container
-  %h1 Users
+  %h3
+    Users
+    %span.pull-right
+      = link_to 'Create User', new_user_path, :class => "btn btn-lg btn-danger", :style => 'margin: 5px; padding: 5px;'
   .row
     .col-md-12
       %table.table-striped.table-bordered.table
@@ -10,7 +13,7 @@
         - @users.each do |user|
           %tr
             %td
-              = user.fullname
+              = link_to user.fullname, user_path(user)
             %td.status
               = user.status
             %td
