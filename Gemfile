@@ -26,9 +26,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'random_data'
 gem 'bootstrap-sass'
 
+# Use haml-rails for using haml as default template engine
 gem 'haml-rails'
 
-gem 'pry'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -42,6 +42,9 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
 
+  # Call 'binding.pry' anywhere in the code to stop execution and get a debugger rails console
+  gem 'pry'
+
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
 
@@ -50,3 +53,8 @@ group :development, :test do
   gem 'haml'
 end
 
+group :test do
+  gem 'rspec'
+  gem 'rspec-rails'
+  gem 'cucumber-rails', :require => false
+end
