@@ -27,6 +27,8 @@ gem 'random_data'
 gem 'bootstrap-sass'
 
 gem 'haml-rails'
+
+gem 'pry'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

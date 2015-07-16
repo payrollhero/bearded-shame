@@ -1,24 +1,19 @@
-%p#notice= notice
+.container
+  %p#notice= notice
 
-%p
-  %b First name:
-  = @user.first_name
-%p
-  %b Last name:
-  = @user.last_name
-%p
-  %b Email:
-  = @user.email
-%p
-  %b Username:
-  = @user.username
-%p
-  %b Password:
-  = @user.password
-%p
-  %b Status:
-  = @user.status
+  %p
+    %b Full name:
+    = @user.full_name
+  %p
+    %b Email:
+    = @user.email
+  %p
+    %b Username:
+    = @user.gender.capitalize
+  %p
+    %b Status:
+    = @user.status.try(:gsub, "_", " ").try(:capitalize)
 
-= link_to 'Edit', edit_user_path(@user)
-\|
-= link_to 'Back', users_path
+  = link_to 'Edit', edit_user_path(@user)
+  \|
+  = link_to 'Back', users_path

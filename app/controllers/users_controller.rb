@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy, :trim, :massage_and_trim, :shave]
-  before_action :check_if_shave_is_needed, only: [:trim, :massage_and_trim, :shave]
 
   # GET /users
   # GET /users.json
@@ -63,18 +62,27 @@ class UsersController < ApplicationController
   end
 
   def trim
-    @user.update_attributes(:status => "trimmed")
-    redirect_to :back, :notice => "User got successfully groomed."  
+    if @user.update_attributes(:status => "trimmed")
+      redirect_to users_url, :notice => "User got successfully shaved / trimmed."  
+    else
+      redirect_to users_url, :notice => @user.errors.to_a.join("<br />")  
+    end
   end
 
   def massage_and_trim
-    @user.update_attributes(:status => "massaged_and_trimmed")
-    redirect_to :back, :notice => "User got successfully groomed."
+    if @user.update_attributes(:status => "massaged_and_trimmed")
+      redirect_to users_url, :notice => "User got successfully shaved / trimmed."  
+    else
+      redirect_to users_url, :notice => @user.errors.to_a.join("<br />")  
+    end
   end
 
   def shave
-    @user.update_attributes(:status => "shaved")
-    redirect_to :back, :notice => "User got successfully groomed."
+    if @user.update_attributes(:status => "shaved")
+      redirect_to users_url, :notice => "User got successfully shaved / trimmed."  
+    else
+      redirect_to users_url, :notice => @user.errors.to_a.join("<br />")  
+    end
   end
   
   private
@@ -85,10 +93,7 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:first_name, :last_name, :email, :username, :password)
-    end
-
-    def check_if_shave_is_needed
-      redirect_to :back, :notice => "User can't be groomed again as he has shaved / trimmed only #{@user.last_shaved_at} days ago." unless @user.needs_shave_or_trimming
+      params[:user][:status] = params[:user][:status].downcase.gsub(" ", "_") 
+      params.require(:user).permit(:first_name, :last_name, :email, :gender, :status)
     end
 end
