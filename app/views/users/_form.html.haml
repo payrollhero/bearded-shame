@@ -20,6 +20,7 @@
     = f.email_field :email, :class => "form-control", :required => true
   %br
   .field
+    = f.label :gender
     %select{:name=>"user[gender]", :id=> "user_gender"}
       %option{:value=>"male"}Male
       %option{:value=>"female"}Female
@@ -30,6 +31,7 @@
       %option{:value=>"shaved"}Shaved
       %option{:value=>"massaged_and_trimmed"}Massaged and trimmed
       %option{:value=>"trimmed"}Trimmed
+      %option{:value=>"unshaved"}Unshaved
   %br
   .actions
     = f.submit 'Save', :class => "btn btn-success"

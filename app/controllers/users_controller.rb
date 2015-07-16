@@ -62,7 +62,7 @@ class UsersController < ApplicationController
   end
 
   def trim
-    if @user.update_attributes(:status => "trimmed")
+    if @user.update_attributes(:shaved_at => DateTime.now, :status => "trimmed")
       redirect_to users_url, :notice => "User got successfully shaved / trimmed."  
     else
       redirect_to users_url, :notice => @user.errors.to_a.join("<br />")  
@@ -70,7 +70,7 @@ class UsersController < ApplicationController
   end
 
   def massage_and_trim
-    if @user.update_attributes(:status => "massaged_and_trimmed")
+    if @user.update_attributes(:shaved_at => DateTime.now, :status => "massaged_and_trimmed")
       redirect_to users_url, :notice => "User got successfully shaved / trimmed."  
     else
       redirect_to users_url, :notice => @user.errors.to_a.join("<br />")  
@@ -78,7 +78,7 @@ class UsersController < ApplicationController
   end
 
   def shave
-    if @user.update_attributes(:status => "shaved")
+    if @user.update_attributes(:shaved_at => DateTime.now, :status => "shaved")
       redirect_to users_url, :notice => "User got successfully shaved / trimmed."  
     else
       redirect_to users_url, :notice => @user.errors.to_a.join("<br />")  
@@ -93,7 +93,7 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params[:user][:status] = params[:user][:status].downcase.gsub(" ", "_") 
-      params.require(:user).permit(:first_name, :last_name, :email, :gender, :status)
+      params[:user][:shaved_at] = DateTime.now  
+      params.require(:user).permit(:first_name, :last_name, :email, :gender, :status, :shaved_at)
     end
 end
