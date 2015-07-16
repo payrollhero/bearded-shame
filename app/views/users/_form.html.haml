@@ -32,14 +32,18 @@
       %option{:value=>"massaged_and_trimmed"}Massaged and trimmed
       %option{:value=>"trimmed"}Trimmed
       %option{:value=>"unshaved"}Unshaved
+      %option{:value=>"not_applicable"}Not Applicable
+
   %br
   .actions
     = f.submit 'Save', :class => "btn btn-success"
 
   %br  
 
-- if ["edit", "update"].include?(params[:action])
-  %script{:type => "text/javascript"}
-    $(function() {
-    $('#user_status').find('option[value="#{@user.status}"]').attr('selected', 'selected');    
-    });
+
+%script{:type => "text/javascript"}
+  $(function() {
+  $('#user_status').find('option[value="#{@user.status}"]').attr('selected', 'selected');    
+  $('#user_gender').find('option[value="#{@user.gender}"]').attr('selected', 'selected');    
+  
+  });
