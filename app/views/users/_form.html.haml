@@ -21,29 +21,15 @@
   %br
   .field
     = f.label :gender
-    %select{:name=>"user[gender]", :id=> "user_gender"}
-      %option{:value=>"male"}Male
-      %option{:value=>"female"}Female
+    = f.select :gender, options_for_select({"Male" => "male", "Female" => "female"}, @user.gender)
+    
   %br
   .field
     = f.label :status
-    %select{:name=>"user[status]", :id=> "user_status"}
-      %option{:value=>"shaved"}Shaved
-      %option{:value=>"massaged_and_trimmed"}Massaged and trimmed
-      %option{:value=>"trimmed"}Trimmed
-      %option{:value=>"unshaved"}Unshaved
-      %option{:value=>"not_applicable"}Not Applicable
+    = f.select :gender, options_for_select({ "Shaved" => "shaved", "Massaged and trimmed" => "massaged_and_trimmed", "Trimmed" => "trimmed", "Unshaved" => "unshaved", "Not Applicable" => "not_applicable" }, @user.status)
 
   %br
   .actions
     = f.submit 'Save', :class => "btn btn-success"
 
   %br  
-
-
-%script{:type => "text/javascript"}
-  $(function() {
-  $('#user_status').find('option[value="#{@user.status}"]').attr('selected', 'selected');    
-  $('#user_gender').find('option[value="#{@user.gender}"]').attr('selected', 'selected');    
-  
-  });
