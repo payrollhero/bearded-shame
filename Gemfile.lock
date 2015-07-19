@@ -155,6 +155,8 @@ GEM
     rdoc (4.2.0)
       json (~> 1.4)
     ref (1.0.5)
+    responders (2.1.0)
+      railties (>= 4.2.0, < 5)
     rspec (3.3.0)
       rspec-core (~> 3.3.0)
       rspec-expectations (~> 3.3.0)
@@ -237,6 +239,7 @@ DEPENDENCIES
   pry
   rails (= 4.2.1)
   random_data
+  responders (~> 2.0)
   rspec
   rspec-rails
   sass-rails (~> 5.0)

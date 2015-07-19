@@ -29,6 +29,8 @@ gem 'bootstrap-sass'
 # Use haml-rails for using haml as default template engine
 gem 'haml-rails'
 
+#Use responders to use respond_with instead of respond_to block in controllers
+gem 'responders', '~> 2.0' 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
