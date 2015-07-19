@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
   end
 
   def shaved_at_in_ago
-    ActionController::Base.helpers.time_ago_in_words(shaved_at)
+    shaved_at.present? ? ActionController::Base.helpers.time_ago_in_words(shaved_at) : ""
   end
   def can_be_marked_unshaved
     if !needs_shave_or_trimming && has_beard?(status)
@@ -39,7 +39,7 @@ class User < ActiveRecord::Base
     if !has_beard?(status_was) && !has_beard?(status) && status_changed?
       custom_error_messages("shaving_not_needed_validation") if !needs_shave_or_trimming
     else
-      return true
+      true
     end
   end
 
@@ -49,17 +49,17 @@ class User < ActiveRecord::Base
 
   def needs_shave_or_trimming
     if ["shaved", "massaged_and_trimmed", "trimmed" "unshaved"].include?(status) && male?
-      if status_was.present? && last_shaved_at >= 3
-        return true
-      elsif status_was.present? && last_shaved_at <= 3
-        return false
-      else status_was.nil?
-        return true
-      end
-    elsif status == "not_applicable" && !male?
-      return true
-    elsif status != "not_applicable" && !male?
-      return false
+      grooming_needed_based_on_last_status      
+    elsif !male?
+      status == "not_applicable" ? true : false
+    end
+  end
+
+  def grooming_needed_based_on_last_status
+    if status_was.present?
+      last_shaved_at >= 3 ? true : false
+    else
+      true
     end
   end
 

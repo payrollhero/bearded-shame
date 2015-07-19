@@ -49,7 +49,7 @@ class UsersController < ApplicationController
     if @user.update_attributes(:shaved_at => DateTime.now, :status => "trimmed")
       redirect_to users_url, :notice => "User got successfully shaved / trimmed."  
     else
-      redirect_to users_url, :notice => @user.errors.to_a.join("<br />").html_safe  
+      redirect_to users_url, :notice => @user.errors.to_a.join("<br />")  
     end
   end
 
@@ -57,7 +57,7 @@ class UsersController < ApplicationController
     if @user.update_attributes(:shaved_at => DateTime.now, :status => "massaged_and_trimmed")
       redirect_to users_url, :notice => "User got successfully shaved / trimmed."  
     else
-      redirect_to users_url, :notice => @user.errors.to_a.join("<br />").html_safe  
+      redirect_to users_url, :notice => @user.errors.to_a.join("<br />")  
     end
   end
 
@@ -65,7 +65,7 @@ class UsersController < ApplicationController
     if @user.update_attributes(:shaved_at => DateTime.now, :status => "shaved")
       redirect_to users_url, :notice => "User got successfully shaved / trimmed."  
     else
-      redirect_to users_url, :notice => @user.errors.to_a.join("<br />").html_safe  
+      redirect_to users_url, :notice => @user.errors.to_a.join("<br />")  
     end
   end
   

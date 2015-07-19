@@ -47,7 +47,7 @@ describe User do
 
     before do
         @user = User.new(:first_name=> "User", :last_name=> "User", :email => "user@example.com", :gender => "male", :status => "shaved", :shaved_at => DateTime.now)
-  	end
+    end
 
   	subject { @user }
 
