@@ -14,17 +14,20 @@ class User < ActiveRecord::Base
   def custom_error_messages(validation_type)
     case validation_type
     when "can_be_marked_unshaved"
-      errors.add(:base, "User can't be marked unshaved as he has shaved / trimmed #{ActionController::Base.helpers.time_ago_in_words(self.shaved_at)} ago.")
+      errors.add(:base, "User can't be marked unshaved as he has shaved / trimmed #{shaved_at_in_ago} ago.")
     when "gender_validation"
       errors.add(:base, "Female user can't be shaved / trimmed.")
     when "shaving_not_needed_validation"
-      errors.add(:base, "User can't be shaved / trimmed again as he has shaved / trimmed #{ActionController::Base.helpers.time_ago_in_words(self.shaved_at)} ago.")
+      errors.add(:base, "User can't be shaved / trimmed again as he has shaved / trimmed #{shaved_at_in_ago} ago.")
     end
   end
 
+  def shaved_at_in_ago
+    ActionController::Base.helpers.time_ago_in_words(shaved_at)
+  end
   def can_be_marked_unshaved
-    if !self.needs_shave_or_trimming && has_beard?(status)
-      custom_error_messages("can_be_marked_unshaved") if self.status_changed?
+    if !needs_shave_or_trimming && has_beard?(status)
+      custom_error_messages("can_be_marked_unshaved") if status_changed?
     end
   end
 
@@ -33,19 +36,19 @@ class User < ActiveRecord::Base
   end
 
   def validate_needs_shave_or_trimming
-    if !has_beard?(status_was) && !has_beard?(status) && self.status_changed?
-      custom_error_messages("shaving_not_needed_validation") if !self.needs_shave_or_trimming
+    if !has_beard?(status_was) && !has_beard?(status) && status_changed?
+      custom_error_messages("shaving_not_needed_validation") if !needs_shave_or_trimming
     else
       return true
     end
   end
 
   def validate_shaving_need_based_on_gender
-    custom_error_messages("gender_validation") if !self.male? && status != "not_applicable"
+    custom_error_messages("gender_validation") if !male? && status != "not_applicable"
   end
 
   def needs_shave_or_trimming
-    if ["shaved", "massaged_and_trimmed", "trimmed" "unshaved"].include?(status) && self.male?
+    if ["shaved", "massaged_and_trimmed", "trimmed" "unshaved"].include?(status) && male?
       if status_was.present? && last_shaved_at >= 3
         return true
       elsif status_was.present? && last_shaved_at <= 3
@@ -53,9 +56,9 @@ class User < ActiveRecord::Base
       else status_was.nil?
         return true
       end
-    elsif status == "not_applicable" && !self.male?
+    elsif status == "not_applicable" && !male?
       return true
-    elsif status != "not_applicable" && !self.male?
+    elsif status != "not_applicable" && !male?
       return false
     end
   end
@@ -69,6 +72,6 @@ class User < ActiveRecord::Base
   end
 
   def last_shaved_at
-    ((Time.now - shaved_at) / 60 / 60 / 24).round(1).to_i
+    ((Time.now - shaved_at_was) / 60 / 60 / 24).round(1).to_i
   end
 end
