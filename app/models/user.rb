@@ -11,9 +11,20 @@ class User < ActiveRecord::Base
   validate :validate_shaving_need_based_on_gender
   validate :validate_needs_shave_or_trimming
 
+  def custom_error_messages(validation_type)
+    case validation_type
+    when "can_be_marked_unshaved"
+      errors.add(:base, "User can't be marked unshaved as he has shaved / trimmed #{ActionController::Base.helpers.time_ago_in_words(self.shaved_at)} ago.")
+    when "gender_validation"
+      errors.add(:base, "Female user can't be shaved / trimmed.")
+    when "shaving_not_needed_validation"
+      errors.add(:base, "User can't be shaved / trimmed again as he has shaved / trimmed #{ActionController::Base.helpers.time_ago_in_words(self.shaved_at)} ago.")
+    end
+  end
+
   def can_be_marked_unshaved
     if !self.needs_shave_or_trimming && has_beard?(status)
-      errors.add(:base, "User can't be marked unshaved as he has shaved / trimmed #{ActionController::Base.helpers.time_ago_in_words(self.shaved_at)} ago.") if self.status_changed?
+      custom_error_messages("can_be_marked_unshaved") if self.status_changed?
     end
   end
 
@@ -23,14 +34,14 @@ class User < ActiveRecord::Base
 
   def validate_needs_shave_or_trimming
     if !has_beard?(status_was) && !has_beard?(status) && self.status_changed?
-      errors.add(:base, "User can't be shaved / trimmed again as he has shaved / trimmed #{ActionController::Base.helpers.time_ago_in_words(self.shaved_at)} ago.") if !self.needs_shave_or_trimming
+      custom_error_messages("shaving_not_needed_validation") if !self.needs_shave_or_trimming
     else
       return true
     end
   end
 
   def validate_shaving_need_based_on_gender
-    errors.add(:base, "Female user can't be shaved / trimmed.") if !self.male? && status != "not_applicable"
+    custom_error_messages("gender_validation") if !self.male? && status != "not_applicable"
   end
 
   def needs_shave_or_trimming

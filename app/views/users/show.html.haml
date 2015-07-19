@@ -12,7 +12,7 @@
     = @user.gender.capitalize
   %p
     %b Status:
-    = @user.status.try(:gsub, "_", " ").try(:capitalize)
+    = @user.status.gsub("_", " ").capitalize
 
   = link_to 'Edit', edit_user_path(@user)
   \|

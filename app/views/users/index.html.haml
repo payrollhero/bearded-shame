@@ -1,7 +1,6 @@
 .container  
   %h1 Users
-  %p#notice= notice
-
+  %p#notice= notice.try(:html_safe)
   %table.table.table-striped.table-bordered
     %thead
       %tr
@@ -19,7 +18,7 @@
           %td= user.full_name
           %td= user.email
           %td= user.gender.capitalize
-          %td= user.status.try(:gsub, "_", " ").try(:capitalize)
+          %td= user.status.gsub("_", " ").capitalize
           %td= user.shaved_at.try(:strftime, "%d-%m-%y %l:%m %p")
           %td= link_to 'Show', user
           %td= link_to 'Edit', edit_user_path(user)
