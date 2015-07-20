@@ -1,5 +1,5 @@
 require 'spec_helper'
-
+require 'pry'
 describe User do
 
   describe "needs_shave_or_trimming" do
@@ -45,138 +45,183 @@ describe User do
     end
   end
 
-  before do
-    @user = User.new(:first_name=> "User", :last_name=> "User", :email => "user@example.com", :gender => "male", :status => "shaved", :shaved_at => DateTime.now)
+  context "An user object" do
+    let!(:user) { User.new(:first_name=> "User", :last_name=> "User", :email => "user@example.com", :gender => "male", :status => "shaved", :shaved_at => DateTime.now) }
+    
+    it "respond to its attributes" do
+      [:first_name, :last_name, :email, :gender, :status, :shaved_at].each do |attribute|
+        expect(user).to respond_to(attribute)
+      end
+    end
   end
 
-	subject { @user }
-
-	it { should respond_to(:first_name) }
-  it { should respond_to(:last_name) }
-	it { should respond_to(:email) }
-	it { should respond_to(:gender) }
-  it { should respond_to(:status) }
-  it { should respond_to(:shaved_at) }
-  it { should be_valid }
-
-  describe "when first_name is not present" do
-    before { @user.first_name = " " }
-    it { should_not be_valid }
-  end
-
-  describe "when first_name is too long" do
-    before { @user.first_name = "a" * 251 }
-    it { should_not be_valid }
-  end
-
-  describe "when first_name is not too long" do
-    before { @user.first_name = "a" * 249 }
-    it { should be_valid }
-  end
-
-  describe "when first_name is present" do
-    before { @user.first_name = "a" * 249 }
-    it { should be_valid }
-  end
-
-  describe "when last_name is not present" do
-    before { @user.last_name = " " }
-    it { should_not be_valid }
-  end
-
-  describe "when last_name is too long" do
-    before { @user.last_name = "a" * 251 }
-    it { should_not be_valid }
-  end
-
-  describe "when last_name is not too long" do
-    before { @user.last_name = "a" * 249 }
-    it { should be_valid }
-  end
-
-  describe "when last_name is present" do
-    before { @user.last_name = "a" * 249 }
-    it { should be_valid }
-  end
-
-  describe "when email is not present" do
-  	before { @user.email = " " }
-    it { should_not be_valid }
-  end
-      
-  describe "when email format is invalid" do
+  context "when user object is initialized with first_name is not present" do
+    let!(:user) { User.new(:first_name=> "", :last_name=> "User", :email => "user@example.com", :gender => "male", :status => "shaved", :shaved_at => DateTime.now) }
+    
     it "should be invalid" do
-      addresses = %w[user@foo,com user_at_foo.org example.user@foo.
-        foo@bar_baz.com foo@bar+baz.com]
-      addresses.each do |invalid_address|
-       	@user.email = invalid_address
-       	@user.should_not be_valid
-      end      
+      expect(user).to be_invalid
     end
   end
 
-  describe "when email format is valid" do
+  context "when user object is initialized with first_name is too long" do
+    let!(:user) { User.new(:first_name=> "a" * 251, :last_name=> "User", :email => "user@example.com", :gender => "male", :status => "shaved", :shaved_at => DateTime.now) }
+    
+    it "should be invalid" do
+      expect(user).to be_invalid
+    end
+  end
+
+  context "when user object is initialized with first_name is not too long" do
+    let!(:user) { User.new(:first_name=> "a" * 249, :last_name=> "User", :email => "user@example.com", :gender => "male", :status => "shaved", :shaved_at => DateTime.now) }
+    
+    it "should be invalid" do
+      expect(user).to be_valid
+    end
+  end
+
+  context "when user object is initialized with first_name is present" do
+    let!(:user) { User.new(:first_name=> "a", :last_name=> "User", :email => "user@example.com", :gender => "male", :status => "shaved", :shaved_at => DateTime.now) }
+    
     it "should be valid" do
-      addresses = %w[user@foo.COM A_US-ER@f.b.org frst.lst@foo.jp a+b@baz.cn]
-      addresses.each do |valid_address|
-        @user.email = valid_address
-        @user.should be_valid
-      end      
+      expect(user).to be_valid
     end
   end
-      
-  describe "when email address is already taken" do
-    before do
-      user_with_same_email = @user.dup
-      user_with_same_email.email = @user.email.upcase
-      user_with_same_email.save
+
+  context "when user object is initialized with last_name is not present" do
+    let!(:user) { User.new(:first_name=> "a" * 21, :last_name=> "", :email => "user@example.com", :gender => "male", :status => "shaved", :shaved_at => DateTime.now) }
+    
+    it "should be invalid" do
+      expect(user).to be_invalid
     end
-
-    it { should_not be_valid }
   end
 
-  describe "when email is present" do
-    before { @user.email = Random.email }
-    it { should be_valid }
-  end
-      
-  describe "when gender is not present" do
-    before { @user.gender = " " }
-    it { should_not be_valid }
+  context "when user object is initialized with last_name is too long" do
+    let!(:user) { User.new(:last_name=> "a" * 251, :first_name=> "User", :email => "user@example.com", :gender => "male", :status => "shaved", :shaved_at => DateTime.now) }
+    
+    it "should be invalid" do
+      expect(user).to be_invalid
+    end
   end
 
-  describe "when unpermitted gender value is present" do
-    before { @user.gender = "test" }
-    it { should_not be_valid }
+  context "when user object is initialized with last_name is not too long" do
+    let!(:user) { User.new(:last_name=> "a" * 250, :first_name=> "User", :email => "user@example.com", :gender => "male", :status => "shaved", :shaved_at => DateTime.now) }
+    
+    it "should be valid" do
+      expect(user).to be_valid
+    end
   end
 
-  describe "when gender is present" do
-    before { @user.gender = "male" }
-    it { should be_valid }
+  context "when user object is initialized with last_name is present" do
+    let!(:user) { User.new(:last_name=> "a" * 250, :first_name=> "User", :email => "user@example.com", :gender => "male", :status => "shaved", :shaved_at => DateTime.now) }
+    
+    it "should be valid" do
+      expect(user).to be_valid
+    end
   end
 
-  describe "when status is not present" do
-    before { @user.status = " " }
-    it { should_not be_valid }
+  context "when user object is initialized with email is not present" do
+    let!(:user) { User.new(:first_name=> "a" * 25, :last_name=> "User", :email => "", :gender => "male", :status => "shaved", :shaved_at => DateTime.now) }
+
+    it "should be invalid" do
+      expect(user).to be_invalid
+    end
   end
 
-  describe "when unpermitted status value is present" do
-    before { @user.gender = "test" }
-    it { should_not be_valid }
+  context "when email format is invalid" do
+    invalid_email_formats = %w[user@foo,com user_at_foo.org example.user@foo.foo@bar_baz.com foo@bar+baz.com]
+    let!(:user) { User.new(:first_name=> "a" * 25, :last_name=> "User", :email => invalid_email_formats.sample, :gender => "male", :status => "shaved", :shaved_at => DateTime.now) }
+
+    it "should be invalid" do
+      expect(user).to be_invalid
+    end
   end
 
-  describe "when status is present" do
-    before { @user.status = "shaved" }
-    it { should be_valid }
+  context "when email format is valid" do
+    valid_email_formats = %w[user@foo.COM A_US-ER@f.b.org frst.lst@foo.jp a+b@baz.cn]
+    let!(:user) { User.new(:first_name=> "a" * 25, :last_name=> "User", :email => valid_email_formats.sample, :gender => "male", :status => "shaved", :shaved_at => DateTime.now) }
+    it "should be valid" do
+      expect(user).to be_valid    
+    end
   end
 
-  describe "when shaved_at value is present" do
-    before { @user.shaved_at = DateTime.now }
-    it { should be_valid }
+  context "when email address is already taken" do
+    let!(:user) { User.create(:first_name=> "a" * 25, :last_name=> "User", :email => "testuser@gmail.com", :gender => "male", :status => "shaved", :shaved_at => DateTime.now) }
+    let!(:user_with_same_email) { User.new(:first_name=> "a" * 25, :last_name=> "User", :email => "testuser@gmail.com", :gender => "male", :status => "shaved", :shaved_at => DateTime.now) }
+
+    it "should be invalid" do
+      expect(user_with_same_email).to be_invalid
+    end
   end
 
-  describe "when shaved_at is present" do
-    before { @user.shaved_at = nil }
-    it { should be_valid }
+  context "when email is present" do
+    let!(:user) { User.new(:first_name=> "a" * 25, :last_name=> "User", :email => "testuser@gmail.com", :gender => "male", :status => "shaved", :shaved_at => DateTime.now) }
+
+    it "should be valid" do
+      expect(user).to be_valid
+    end
+  end
+
+  context "when gender is not present" do
+    let!(:user) { User.new(:first_name=> "a" * 25, :last_name=> "User", :email => "testuser@gmail.com", :gender => "", :status => "shaved", :shaved_at => DateTime.now) }
+
+    it "should be invalid" do
+      expect(user).to be_invalid
+    end
+  end
+
+  context "when unpermitted gender value is present" do
+    let!(:user) { User.new(:first_name=> "a" * 25, :last_name=> "User", :email => "testuser@gmail.com", :gender => "males", :status => "shaved", :shaved_at => DateTime.now) }
+
+    it "should be invalid" do
+      expect(user).to be_invalid
+    end
+  end
+
+  context "when gender is present" do
+    let!(:user) { User.new(:first_name=> "a" * 25, :last_name=> "User", :email => "testuser@gmail.com", :gender => "male", :status => "shaved", :shaved_at => DateTime.now) }
+
+    it "should be valid" do
+      expect(user).to be_valid
+    end
+  end
+
+  context "when status is not present" do
+    let!(:user) { User.new(:first_name=> "a" * 25, :last_name=> "User", :email => "testuser@gmail.com", :gender => "male", :status => "", :shaved_at => DateTime.now) }
+
+    it "should be valid" do
+      expect(user).to be_invalid
+    end
+  end
+
+  context "when unpermitted status value is present" do
+    let!(:user) { User.new(:first_name=> "a" * 25, :last_name=> "User", :email => "testuser@gmail.com", :gender => "male", :status => "shaven", :shaved_at => DateTime.now) }
+
+    it "should be invalid" do
+      expect(user).to be_invalid
+    end
+  end
+
+  context "when status is present" do
+    let!(:user) { User.new(:first_name=> "a" * 25, :last_name=> "User", :email => "testuser@gmail.com", :gender => "male", :status => "shaved", :shaved_at => DateTime.now) }
+
+    it "should be valid" do
+      expect(user).to be_valid
+    end
+  end
+
+  context "when shaved_at value is present" do
+    let!(:user) { User.new(:first_name=> "a" * 25, :last_name=> "User", :email => "testuser@gmail.com", :gender => "male", :status => "shaved", :shaved_at => DateTime.now) }
+
+    it "should be valid" do
+      expect(user).to be_valid
+    end
+  end
+
+  context "when shaved_at is present" do
+    let!(:user) { User.new(:first_name=> "a" * 25, :last_name=> "User", :email => "testuser@gmail.com", :gender => "male", :status => "shaved", :shaved_at => nil) }
+
+    it "should be valid" do
+      expect(user).to be_valid
+    end
   end
 end
