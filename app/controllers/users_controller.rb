@@ -29,6 +29,7 @@ class UsersController < ApplicationController
   end
 
   def update
+    
     respond_with @user do |format|
       if @user.save
         format.html {redirect_to user_path(@user), :notice => 'User was successfully updated.'}

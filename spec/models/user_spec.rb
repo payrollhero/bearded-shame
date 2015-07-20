@@ -6,7 +6,7 @@ describe User do
     it "should be false when status is present & shaved_at date is less than 3 days old" do
       @user = User.create(first_name: "test", last_name: "user", email: Random.email, :gender => "male", :status => ["shaved", "trimmed", "massaged_and_trimmed", "unshaved"].sample, :shaved_at => DateTime.now)
       needs_shave_or_trimming = @user.needs_shave_or_trimming
-      needs_shave_or_trimming.should be_falsy
+      expect(needs_shave_or_trimming).to be_falsy
     end
   end
 
@@ -14,34 +14,34 @@ describe User do
     it "should return true when user is male" do
       @user = User.create(first_name: "test", last_name: "user", email: Random.email, :gender => "female", :status => ["shaved", "trimmed", "massaged_and_trimmed", "unshaved"].sample, :shaved_at => DateTime.now)
       is_user_male = @user.male?
-      is_user_male.should be_falsy
+      expect(is_user_male).to be_falsy
     end
 
     it "should return false when user is male" do
       @user = User.create(first_name: "test", last_name: "user", email: Random.email, :gender => "male", :status => ["shaved", "trimmed", "massaged_and_trimmed", "unshaved"].sample, :shaved_at => DateTime.now)
       is_user_male = @user.male?
-      is_user_male.should be_truthy
+      expect(is_user_male).to be_truthy
     end
   end
 
   describe "has_beard?" do
     it "should return true when user has beard" do
       @user = User.create(first_name: "test", last_name: "user", email: Random.email, :gender => "female", :status => "unshaved", :shaved_at => DateTime.now)
-      is_user_male = @user.has_beard?(@user.status)
-      is_user_male.should be_truthy
+      user_has_beard = @user.has_beard?(@user.status)
+      expect(user_has_beard).to be_truthy
     end
 
     it "should return false when user doesn't has beard" do
       @user = User.create(first_name: "test", last_name: "user", email: Random.email, :gender => "male", :status => "shaved", :shaved_at => DateTime.now)
-      is_user_male = @user.has_beard?(@user.status)
-      is_user_male.should be_falsy
+      user_has_beard = @user.has_beard?(@user.status)
+      expect(user_has_beard).to be_falsy
     end
   end
   describe "full_name" do
     it "should return name containing both first_name & last name separated by space in title format" do
       @user = User.create(first_name: "test", last_name: "user", email: Random.email, :gender => ["male", "female"].sample, :status => ["shaved", "trimmed", "massaged_and_trimmed", "unshaved"].sample, :shaved_at => DateTime.now)
       full_name = @user.full_name
-      full_name.should eq("Test User")
+      expect(full_name).to eq("Test User")
     end
   end
 
