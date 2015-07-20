@@ -1,0 +1,31 @@
+.container  
+  %h1 Users
+  %p#notice= notice.try(:html_safe)
+  %table.table.table-striped.table-bordered
+    %thead
+      %tr
+        %th Full Name
+        %th Email
+        %th Gender
+        %th Status
+        %th Last Shaved On
+        %th{colspan: 6} Actions
+
+
+    %tbody
+      - @users.each do |user|
+        %tr
+          %td= user.full_name
+          %td= user.email
+          %td= user.gender.capitalize
+          %td= user.status.gsub("_", " ").capitalize
+          %td= user.shaved_at.try(:strftime, "%d-%m-%y %l:%m %p")
+          %td= link_to 'Show', user
+          %td= link_to 'Edit', edit_user_path(user)
+          %td= link_to 'Destroy', user, :method => :delete, :data => { :confirm => 'Are you sure?' }
+          %td= user.male? ? link_to('Trim', trim_user_path(user)) : 'Not Applicable' 
+          %td= user.male? ? link_to('Massage and Trim', massage_and_trim_user_path(user)) : 'Not Applicable'
+          %td= user.male? ? link_to('Shave', shave_user_path(user)) : 'Not Applicable'
+  %br
+
+  = link_to 'New User', new_user_path

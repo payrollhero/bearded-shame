@@ -1,0 +1,19 @@
+.container
+  %p#notice= notice
+
+  %p
+    %b Full name:
+    = @user.full_name
+  %p
+    %b Email:
+    = @user.email
+  %p
+    %b Username:
+    = @user.gender.capitalize
+  %p
+    %b Status:
+    = @user.status.gsub("_", " ").capitalize
+
+  = link_to 'Edit', edit_user_path(@user)
+  \|
+  = link_to 'Back', users_path

@@ -11,8 +11,9 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.1.0'
+
 # See https://github.com/rails/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
+gem 'therubyracer', platforms: :ruby
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -25,6 +26,11 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'random_data'
 gem 'bootstrap-sass'
 
+# Use haml-rails for using haml as default template engine
+gem 'haml-rails'
+
+#Use responders to use respond_with instead of respond_to block in controllers
+gem 'responders', '~> 2.0' 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -38,6 +44,9 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
 
+  # Call 'binding.pry' anywhere in the code to stop execution and get a debugger rails console
+  gem 'pry'
+
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
 
@@ -46,3 +55,8 @@ group :development, :test do
   gem 'haml'
 end
 
+group :test do
+  gem 'rspec'
+  gem 'rspec-rails'
+  gem 'cucumber-rails', :require => false
+end
