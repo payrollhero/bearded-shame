@@ -48,8 +48,14 @@ I have a few suggestions for this exercise. They are:
   * {{ Use more gifs. }}
 
 
+Below is a class reationship diagram describing the models I used for this app:
+
+  * {{ Put the image here }}
+
+
 {{ I would like to continue this job application. || I want to back out. }}
 ```
+
 
 ### Alright, so what is this application supposed to do?
 
@@ -75,8 +81,8 @@ Aside from that, anything goes.
 
 * Quality over quantity.
 * Don't forget your fundamentals. MVC and Rest are Best practices for a reason.
-* **However**, implementing a (decent) SPA will net you bons points.
-* We do not necessarilly require TDD, though proving your application does what t's supposed to without us having to
+* **However**, implementing a (decent) SPA will net you bonus points.
+* We do not necessarilly require TDD, though proving your application does what it's supposed to without us having to
 boot it up will also net you bonus points (hint: *acceptance*).
 * Don't be afraid to remove stuff.
 
