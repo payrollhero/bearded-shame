@@ -48,13 +48,14 @@ I have a few suggestions for this exercise. They are:
   * {{ Use more gifs. }}
 
 
-Below is a class reationship diagram describing the models I used for this app:
-
-  * {{ Put the image here }}
-
-
 {{ I would like to continue this job application. || I want to back out. }}
+
+Below is a class reationship diagram describing the models I used for this app. You may use an online diagraming tool
+like Lucidchart to make your own.
+
 ```
+
+![sample_chart](http://www.ibm.com/developerworks/rational/library/content/RationalEdge/sep04/bell/bell_fig5.jpg)
 
 
 ### Alright, so what is this application supposed to do?
