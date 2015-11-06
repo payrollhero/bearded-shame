@@ -19,10 +19,23 @@ class UsersController < ApplicationController
         format.html { render action: "new", status: :unprocessable_entity}
       end
     end
+  end
+
+  def destroy
+    if user.destroy
+      flash[:notice] = "#{@user.full_name } deleted"
+      redirect_to root_path
+    end
+  end
+
 
   end
 
   private
+
+  def user
+    @user = User.find(params[:id]).decorate
+  end
 
   def user_params
     params.require(:user).permit(:first_name, :last_name, :email)
