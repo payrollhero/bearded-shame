@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150330105752) do
+ActiveRecord::Schema.define(version: 20151106043058) do
+
+  create_table "massages", force: :cascade do |t|
+    t.integer  "user_id",      limit: 4
+    t.string   "type",         limit: 255
+    t.datetime "last_massage"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "massages", ["user_id", "last_massage"], name: "index_massages_on_user_id_and_last_massage", using: :btree
+  add_index "massages", ["user_id", "type"], name: "index_massages_on_user_id_and_type", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "first_name", limit: 255
