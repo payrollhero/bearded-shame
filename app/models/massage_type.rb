@@ -1,2 +1,1 @@
-class MassageType < ActiveRecord::Base
-end
+class MassageType < ActiveRecord::Base;end
