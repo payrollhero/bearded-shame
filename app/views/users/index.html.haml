@@ -6,7 +6,7 @@
     %th Actions
   - @users.each do |user|
     %tr
-      %td= user.fullname
+      %td= user.full_name
       %td
         = link_to 'Trim', trim_user_path(user)
         = link_to 'Massage and Trim', massage_and_trim_user_path(user)
