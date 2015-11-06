@@ -28,6 +28,8 @@ gem 'bootstrap-sass'
 gem "mysql2"
 gem "draper"
 
+gem "capybara"
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
