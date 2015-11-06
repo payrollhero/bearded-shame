@@ -26,6 +26,7 @@ gem 'random_data'
 gem 'bootstrap-sass'
 
 gem "mysql2"
+gem "draper"
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
