@@ -13,7 +13,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to users_path, notice: "#{@user.full_name} created"}
+        format.html { redirect_to users_path, notice: "#{user.decorate.full_name} created"}
       else
         flash[:alert] = @user.errors.full_messages
         format.html { render action: "new", status: :unprocessable_entity}
@@ -23,21 +23,20 @@ class UsersController < ApplicationController
 
   def destroy
     if user.destroy
-      flash[:notice] = "#{@user.full_name } deleted"
+      flash[:notice] = "#{user.decorate.full_name } deleted"
       redirect_to root_path
     end
   end
 
+  # TODO: caching
   def search
     @users = User.search(search_params)
-  end
-
   end
 
   private
 
   def user
-    @user = User.find(params[:id]).decorate
+    @user ||= User.find(params[:id])
   end
 
   def user_params
@@ -47,4 +46,5 @@ class UsersController < ApplicationController
   def search_params
     params.require(:search) rescue nil
   end
+
 end
