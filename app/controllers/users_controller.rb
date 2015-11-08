@@ -28,6 +28,9 @@ class UsersController < ApplicationController
     end
   end
 
+  def search
+    @users = User.search(search_params)
+  end
 
   end
 
@@ -39,5 +42,9 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:first_name, :last_name, :email)
+  end
+
+  def search_params
+    params.require(:search) rescue nil
   end
 end

@@ -1,0 +1,28 @@
+class @Search
+
+  constructor: ->
+    @bindEvents()
+
+  bindEvents: ->
+    # not that it's sane to send a request on each keystroke
+    # just a mvp
+    $("#search-input").keyup (e) =>
+      event = @search(e)
+      @debounce(event, 1000)
+    $(".clear-search").click (e) =>
+      e.preventDefault()
+      $("#search-input").val("")
+      @search(e)
+
+  debounce: (event, timeout) ->
+    setTimeout ->
+      event
+    ,timeout
+
+  search: (e) ->
+    e.preventDefault()
+    form = $('#search-form')
+    form.submit()
+
+  showResults: (results) ->
+    console.log(results)
