@@ -1,21 +1,13 @@
 <h1>Users</h1>
-<%= link_to "Create user", new_user_path, class: "btn btn-primary" %>
-<table class="table-striped table-bordered">
-  <tr>
-    <th>Fullname</th>
-    <th>Actions</th>
-  </tr>
-  <% @users.each do |user| %>
-    <tr>
-      <td>
-        <%= user.full_name %>
-      </td>
-      <td>
-        <%= link_to 'Trim', trim_user_path(user) %>
-        <%= link_to 'Massage and Trim', massage_and_trim_user_path(user) %>
-        <%= link_to 'Shave', shave_user_path(user) %>
-        <%= link_to "Delete User", user_path(user), confirm: "delete this bearded fellow?", method: :delete %>
-      </td>
-    </tr>
-  <% end %>
-</table>
+<%= link_to "Create user", new_user_path, class: 'btn btn-primary' %>
+
+<%= render "search" %>
+
+<label for="fullname">Fullname</label>
+<label for="actions">Actions</label>
+
+<dl class='table-striped table-bordered' id='users'>
+  <div id='users'>
+    <%= render @users %>
+  </div>
+</dl>
