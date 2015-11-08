@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
   def index
-    @users = User.all.decorate
+    @users = User.all
   end
 
   def new
@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(user_params).decorate
+    @user = User.new(user_params)
 
     respond_to do |format|
       if @user.save
