@@ -15,10 +15,7 @@ class UserDecorator < Draper::Decorator
 
   def link_to_massage_trim
     h.link_to(h.massage_and_trim_user_path(object)) do |link|
-      h.content_tag(:span, class:'fa-stack') do
-        h.concat h.content_tag(:i, "", class:'fa fa-bed fa-stack-2x')
-        h.concat h.content_tag(:i, "", class:'fa fa-cut fa-stack-2x')
-      end
+      h.content_tag(:i, "", class:'fa fa-2x fa-bed')
     end
   end
 
