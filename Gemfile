@@ -27,9 +27,6 @@ gem 'bootstrap-sass'
 
 gem "mysql2"
 gem "draper"
-gem "rspec-rails"
-gem "capybara"
-gem "factory_girl_rails"
 gem "font-awesome-rails"
 
 # Use ActiveModel has_secure_password
@@ -51,6 +48,12 @@ group :development, :test do
   gem "pry-rescue"
   gem "pry-byebug"
   gem "pry-stack_explorer"
+
+  gem "rspec-rails"
+  gem "capybara"
+  gem "factory_girl_rails"
+  gem "poltergeist"
+  gem 'phantomjs', :require => 'phantomjs/poltergeist'
 
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
