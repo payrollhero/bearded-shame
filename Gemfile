@@ -25,6 +25,10 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'random_data'
 gem 'bootstrap-sass'
 
+gem "mysql2"
+gem "draper"
+gem "font-awesome-rails"
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -38,6 +42,18 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
 
+  gem "pry"
+  gem "pry-rails"
+  gem "pry-remote"
+  gem "pry-rescue"
+  gem 'pry-byebug', '=1.3.3'
+  gem "pry-stack_explorer"
+
+  gem "rspec-rails"
+  gem "capybara"
+  gem "selenium-webdriver"
+  gem "factory_girl_rails"
+
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
 
@@ -45,4 +61,3 @@ group :development, :test do
   gem 'spring'
   gem 'haml'
 end
-

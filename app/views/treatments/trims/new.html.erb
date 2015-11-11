@@ -1,0 +1,4 @@
+<%= form_for [@user, @treatment], url: user_trims_path do |f| %>
+  <%= f.collection_select(:trim_type_id, @trim_types, :id, :trim_type) %>
+  <%= f.submit %>
+<% end %>

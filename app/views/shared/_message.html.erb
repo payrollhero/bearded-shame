@@ -1,0 +1,7 @@
+<% if flash.any? %>
+  <%- flash.each do |level, message| -%>
+    <%= content_tag(:div, class: 'level error') do %>
+      <%= message %>
+    <% end %>
+  <%- end -%>
+<% end %>

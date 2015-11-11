@@ -14,4 +14,10 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap-sprockets
+//= require search
 //= require_tree .
+
+
+$(document).ready(function(){
+  window.search = new Search
+})

@@ -1,0 +1,5 @@
+<%= form_for [@user, @treatment], url: user_massage_trims_path do |f| %>
+  <%= f.collection_select(:trim_type_id, @trim_types, :id, :trim_type) %>
+  <%= f.collection_select(:massage_type_id, @massage_types, :id, :massage_type) %>
+  <%= f.submit %>
+<% end %>

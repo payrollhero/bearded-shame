@@ -15,12 +15,15 @@ Rails.application.routes.draw do
   #   resources :products
   #
   #
-  root 'users#list'
-  resources :users do
-    member do
-      get 'trim'
-      get 'massage_and_trim'
-      get 'shave'
+  root 'users#index'
+
+  get 'search/:q', as: 'user_search', controller: 'users', action: 'search'
+
+  resources :users, shallow: true do
+    scope module: :treatments do
+      resources :trims
+      resources :massage_trims
+      resources :shave
     end
   end
 
