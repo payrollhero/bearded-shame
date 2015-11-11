@@ -46,7 +46,7 @@ group :development, :test do
   gem "pry-rails"
   gem "pry-remote"
   gem "pry-rescue"
-  gem "pry-byebug"
+  gem 'pry-byebug', '=1.3.3'
   gem "pry-stack_explorer"
 
   gem "rspec-rails"
