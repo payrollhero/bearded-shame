@@ -1,7 +1,6 @@
-# This class trims beards
-class BeardTrimmer
+class UserTreatment
 
-  def self.call(user: user, type: type)
+  def call(user: user, type: type)
     @type = type
     relation = Hash.new {|h,k| h[k] = @type }
     relation[@type.class.to_s.underscore]
@@ -12,7 +11,7 @@ class BeardTrimmer
     @trim
   end
 
-  def self.trim_facial_hair
+  def trim_facial_hair
     facial_hair = @user.facial_hair
     facial_hair.update_attributes(hair_length: @type.length, last_trimmed: Time.now)
     !false
