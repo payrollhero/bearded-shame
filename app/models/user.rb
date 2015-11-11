@@ -16,4 +16,8 @@ class User < ActiveRecord::Base
     where(query).order(users[:updated_at].desc)
   end
 
+  def facial_hair(*args)
+    super || build_facial_hair(*args)
+  end
+
 end
